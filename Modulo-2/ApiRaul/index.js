@@ -67,9 +67,12 @@ app.get('/consultas/:params?', function(req, res) {
     //comprobamos si existe en la base de datos
     compruConsulta(comandos)
         .then(function(result) {
-           // console.log(result)
+
             // si existe en la base de datos lo cogemos 
             if (result) {
+                console.log('-----En la base de datos :')
+                console.log(comandos)
+               
                 return res.send(result)
             }
             //si no esta en la base de datos lo pedimos a a la pagina
@@ -115,7 +118,7 @@ function compruConsulta(comando) {
     return new Promise(function(resolve, reject) {
         MongoClient.connect(url, function(err, db) {
             var dbo = db.db("consultas")
-            dbo.collection("customers").findOne({ url: comando }, function(err, result) {
+            dbo.collection("coleccConsultas").findOne({ url: comando }, function(err, result) {
                 if (err) return reject(err);
                 console.log(result)
                 return resolve(result);
