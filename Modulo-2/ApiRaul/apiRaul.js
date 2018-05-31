@@ -1,12 +1,26 @@
-//var mongo=requied('mongodb')
-//var MongoClient=require('mongodb').MongoClient
 var mongo = require('mongodb')
 var MongoClient = require('mongodb').MongoClient
 var url = "mongodb://localhost:27017/"
 
+function todo() {
+    return new Promise(function(resolve, reject) {
+        MongoClient.connect(url,{ useNewUrlParser: true}, function(err, db) {
+          //  console.log('-----------------------')
+            var dbo = db.db("consultas")
+            dbo.collection("coleccConsultas").find({}).toArray(function(err, result) {
+                //console.log('abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
+                if (err) return reject(err);
 
+                console.log(result)
+               // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+                return resolve(result)
 
-function crearConsulta(datos, callback) {
+            })
+        })
+    })
+}
+
+/*function crearConsulta(datos, callback) {
 
     MongoClient.connect(url, function(err, db) {
         var dbo = db.db("consultas")
@@ -32,8 +46,7 @@ function compruConsulta(comando) {
         })
     })
 }
-
+*/
 module.exports = {
-    crearConsulta,
-    compruConsulta
+    todo
 }

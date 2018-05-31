@@ -1,7 +1,7 @@
 var express = require('express') //llamamos a Expres
 var bodyParser = require('body-parser')
 var app = express()
-//var mongo = require('mongodb')
+var mongo = require('./apiRaul.js')
 var MongoClient = require('mongodb').MongoClient
 var url = "mongodb://localhost:27017/"
 
@@ -31,6 +31,16 @@ app.use(function(req, res, next) {
     next();
 })
 
+
+app.get('/todo', function(req, res) {
+    mongo.todo().then(function(datos) {
+        console.log('--------------------------------------------------')
+        console.log(datos)
+        console.log('--------------------------------------------------')
+        res.send(datos)
+
+    })
+})
 //---------------------
 
 app.get('/characters', function(req, res) {
@@ -57,36 +67,55 @@ app.get('/consultas/:params?', function(req, res) {
     //comprobamos si existe en la base de datos
     compruConsulta(comandos)
         .then(function(result) {
-            console.log(result)
+           // console.log(result)
+            // si existe en la base de datos lo cogemos 
             if (result) {
-            	return res.send(result)
+                return res.send(result)
             }
+            //si no esta en la base de datos lo pedimos a a la pagina
             axios.get(comandos)
-		        .then(function(response) {
-		            console.log('respuesta consulta : ' + res.send(response.data))
-		            res.send(response.data)
-		        })
-		        .catch(function(error) {
-		            console.log(error.data)
-		        })
+                .then(function(response) {
+                    console.log('respuesta consulta : ')
+                    console.log( response.data)
+                    res.send(response.data)
+                    let datConsulta=response.data
+                    let direccion=comandos
+                    crearConsulta(direccion,datConsulta)
+                })
+                .catch(function(error) {
+                    //console.log(error.data)
+                })
         })
         .catch(function(error) {
-            if (error.data = undefined) {
-
-            }
 
         })
 
     /**/
-    
+
     //console.log('Resultado consultaNueva' +  consultaNueva)
 })
+function crearConsulta(direccion,datConsulta){
+    console.log('Funcion URL : ')
+    console.log(direccion)
+    console.log('Funcion datos :')
+    console.log(datConsulta)
+      MongoClient.connect(url, function(err, db) {
+                    var dbo = db.db("consultas")
+                    var miConsulta = { url: direccion, resultado: datConsulta }
+                    dbo.collection("coleccConsultas").insertOne(miConsulta, function(err, res) {
+                        if (err) throw callback(err)
+                        console.log("1 document inserted")
+                        db.close()
+                    })
+                })
+
+}
 
 function compruConsulta(comando) {
     return new Promise(function(resolve, reject) {
         MongoClient.connect(url, function(err, db) {
             var dbo = db.db("consultas")
-            dbo.collection("customers").findOne({ url: comando },function(err, result) {
+            dbo.collection("customers").findOne({ url: comando }, function(err, result) {
                 if (err) return reject(err);
                 console.log(result)
                 return resolve(result);
@@ -94,7 +123,6 @@ function compruConsulta(comando) {
         })
     })
 }
-
 
 
 function generarQuery(query, params) {
