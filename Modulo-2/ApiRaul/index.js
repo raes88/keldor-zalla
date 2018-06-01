@@ -34,9 +34,9 @@ app.use(function(req, res, next) {
 //mostramos en el navegador todo el contenido de la base de datos
 app.get('/todo', function(req, res) {
     mongo.todo().then(function(datos) {
-        console.log('--------------------------------------------------')
-        console.log(datos)
-        console.log('--------------------------------------------------')
+        //console.log('--------------------------------------------------')
+        //console.log(datos)
+        //console.log('--------------------------------------------------')
         res.send(datos)
 
     })
@@ -90,7 +90,6 @@ app.get('/consultas/:params?', function(req, res) {
         })
         .catch(function(error) {
         })
-
     //console.log('Resultado consultaNueva' +  consultaNueva)
 })
 
