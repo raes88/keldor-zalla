@@ -5,7 +5,7 @@ var mongo = require('./apiRaul.js')
 var MongoClient = require('mongodb').MongoClient
 var url = "mongodb://localhost:27017/"
 
-
+//usamos mongodb y promesas para crear la api
 //---------------------
 const axios = require('axios')
 const apiUrl = 'https://rickandmortyapi.com/api/'
@@ -31,7 +31,7 @@ app.use(function(req, res, next) {
     next();
 })
 
-
+//mostramos en el navegador todo el contenido de la base de datos
 app.get('/todo', function(req, res) {
     mongo.todo().then(function(datos) {
         console.log('--------------------------------------------------')
@@ -52,9 +52,10 @@ app.get('/characters', function(req, res) {
         .catch(function(error) {
             console.log(error.data);
         });
-
 })
+
 //------------------------
+//hacemos la consulta a la api externa
 //?name=rick&status=alive
 app.get('/consultas/:params?', function(req, res) {
     let params = req.params.params
@@ -62,56 +63,51 @@ app.get('/consultas/:params?', function(req, res) {
     var result = generarQuery(query, params)
     var comandos = apiUrl + 'character/' + result
     var datos = ''
-    console.log('----------------- ' + comandos)
+    // console.log('----------------- ' + comandos)
 
     //comprobamos si existe en la base de datos
     compruConsulta(comandos)
         .then(function(result) {
-
-            // si existe en la base de datos lo cogemos 
+            // si existe en la base de datos lo cogemos y lo mostramos
             if (result) {
                 console.log('-----En la base de datos :')
                 console.log(comandos)
-               
                 return res.send(result)
             }
-            //si no esta en la base de datos lo pedimos a a la pagina
+            //si no esta en la base de datos lo pedimos a a la pagina y lo mostramos
             axios.get(comandos)
                 .then(function(response) {
                     console.log('respuesta consulta : ')
-                    console.log( response.data)
+                    console.log(response.data)
                     res.send(response.data)
-                    let datConsulta=response.data
-                    let direccion=comandos
-                    crearConsulta(direccion,datConsulta)
+                    let datConsulta = response.data
+                    let direccion = comandos
+                    crearConsulta(direccion, datConsulta)
                 })
                 .catch(function(error) {
                     //console.log(error.data)
                 })
         })
         .catch(function(error) {
-
         })
-
-    /**/
 
     //console.log('Resultado consultaNueva' +  consultaNueva)
 })
-function crearConsulta(direccion,datConsulta){
+
+function crearConsulta(direccion, datConsulta) {
     console.log('Funcion URL : ')
     console.log(direccion)
     console.log('Funcion datos :')
     console.log(datConsulta)
-      MongoClient.connect(url, function(err, db) {
-                    var dbo = db.db("consultas")
-                    var miConsulta = { url: direccion, resultado: datConsulta }
-                    dbo.collection("coleccConsultas").insertOne(miConsulta, function(err, res) {
-                        if (err) throw callback(err)
-                        console.log("1 document inserted")
-                        db.close()
-                    })
-                })
-
+    MongoClient.connect(url, function(err, db) {
+        var dbo = db.db("consultas")
+        var miConsulta = { url: direccion, resultado: datConsulta }
+        dbo.collection("coleccConsultas").insertOne(miConsulta, function(err, res) {
+            if (err) throw callback(err)
+            console.log("1 document inserted")
+            db.close()
+        })
+    })
 }
 
 function compruConsulta(comando) {
@@ -126,7 +122,6 @@ function compruConsulta(comando) {
         })
     })
 }
-
 
 function generarQuery(query, params) {
     let resultado = ""
