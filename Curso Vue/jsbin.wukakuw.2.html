@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2018 by raes88 (http://jsbin.com/wukakuw/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+input{
+  display : block;
+  margin :10px 0;
+}
+</style>
+</head>
+<body>
+  {{nombre}}
+  
+  <input type="text" v-model="nuevaTarea" placeholder="Introduce nueva tarea">
+  
+  <input type="submit" value="Añadir tarea" @click="guardarTarea(nuevaTarea)">
+  <h4>Tareas</h4>
+  <ul v-for="tarea in tareas">
+    <li><a href="#" @click="eliminarTarea(tarea)">X </a></href>{{tarea.nombre}}</li>
+  </ul>
+  
+  <pre>
+    {{$data | json}}
+  </pre>
+
+<script id="jsbin-javascript">
+new Vue({
+  el:'body',
+  data:{
+    nuevaTarea:'',
+    
+    tareas :[
+      { nombre : 'Hacer la compra'},
+      { nombre : 'Grabar episodio'},
+      { nombre : 'Editar episodio'},
+    ],
+  },
+  methods:{
+      guardarTarea: function(tarea){
+        if(tarea.trim()){
+            this.tareas.push({nombre:tarea});
+            this.nuevaTarea='';                      
+        }else{
+         alert('Introduce un nombre para la tarea');
+        }
+      },
+    eliminarTarea:function(tarea){
+      if (confirm('¿Eliminar '+tarea.nombre+' ?'))
+        this.tareas.$remove(tarea)
+    
+  }
+  }
+})
+</script>
+</body>
+</html>
