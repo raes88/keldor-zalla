@@ -14,7 +14,7 @@ export default new Router({
     },
     {
       path: '/todo2',
-      name: 'ToDo',
+      name: 'ToDo2',
       component: ToDo2
     }
   ]

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue | propiedades</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <script></script>
+</head>
+
+<body>
+    <div id="main" class="panel panel-default">
+        <div class="panel-body">
+            <form action="" @submit.prevent="enviarDatos">
+                <div class="form-froup">
+                    <input v-model="nombre" type="text" placeholder="Nombre" class="form-control">
+                    </input>
+                </div>
+                <div class="form-froup">
+                    <input v-model="edad" type="text" placeholder="Edad" class="form-control">
+                    </input>
+                </div>
+                <div class="form-froup">
+                    <input v-model="sexo" type="text" placeholder="Sexo" class="form-control">
+                    </input>
+                </div>
+                <div class="form-froup">
+                    <input v-model="email" type="email" placeholder="Email" class="form-control">
+                    </input>
+                </div>
+                <button v-if="todaLaInformacion" type="submit" class="btn btn-info  pull-right">Enviar datos</button>
+            </form>
+        </div>
+        <pre>
+      {{$data|json}}
+    </pre>
+    </div>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>

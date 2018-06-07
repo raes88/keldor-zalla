@@ -5,7 +5,7 @@
     </ul>
   </div>
 </template>
-s
+
 <script>
 import ToDoItem from './todo-li.vue'
 export default {
