@@ -10,7 +10,7 @@
         :pokemon="pokemon"
         @attackLeft="pokemonListAttack(pokemon, index - 1)"
         @attackRight="pokemonListAttack(pokemon, index + 1)"
-        @delete="removePokemon(pokemon)"
+        
       ></pokemon-card>
     </div>
 
