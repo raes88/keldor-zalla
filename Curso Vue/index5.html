@@ -8,11 +8,15 @@
 </head>
 
 <body>
-	<div id="boton">
-    <input type="text" v-model="nombre">
-    <button id="boton" v-on:click="saludar">
-        Click aqui
-    </button>
+    <div id="boton">
+        <form @submit="enviar" action="" method="post">
+        	<!-- mostramos en el imput el nombre que tenemos -->
+            <input type="text" v-model="nombre">
+            <input type="submit" value="Enviar formulario">
+          <!--   <button id="boton" @click="saludar">
+                Click aqui
+            </button> -->
+        </form>
     </div>
 </body>
 <script type="text/javascript" src="js/main5.js"></script>

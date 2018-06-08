@@ -20,25 +20,18 @@ export default {
     ToDoList,
     ToDoAdd
   },
-  data () {
-    return {
-      title: 'ToDo List Vuex',
-      list: [ {
-        key: 1,
-        name: 'Suspender a todos',
-        state: 'done'
-      }, {
-        key: 2,
-        name: 'Preparar exámenes',
-        state: 'todo'
-      } ]
-    }
-  },
   methods: {
+    // creamos las dispatch de los componentes
     addNewToDo: function (todo) {
       this.$store.dispatch('addTodo', todo)
     },
+    // creamos el dispatch deleteItem y le pasamos el elemento
     deleteItem (item) {
+      // mostramos por pantalla el alert para confirmar la eliminacion
+      if (confirm('¿Eliminar ' + item.name + ' ?')) {
+        // llamamos al deleteTodo del /store/index.js
+        this.$store.dispatch('deleteTodo', item)
+      }
       console.log(item.key)
       console.log('Mensaje recibido de Abuelo')
     }
