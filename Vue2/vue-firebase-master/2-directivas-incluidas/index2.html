@@ -1,15 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	 <script type="text/javascript" src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+    <meta charset="UTF-8">
+    <title>Vue.js Raul</title>
 </head>
 </head>
+
 <body>
-	<main>
-		<h1 v-show='conectado'>Estoy conectado</h1>
-	</main>
-	<script type="text/javascript" src="js/main2.js"></script>
+    <main>
+        <h1 v-if="conectado">Estoy conectado</h1>
+        <h2 v-if="edad < 18">No puedes entrar, eres menor de edad</h2>
+        <h2 v-else-if="edad > 200">Eres inmortal</h2>
+        <h2 v-else>Puedes entrar</h2>
+
+        <template v-if="conectado">
+            <h3>Benvenido Raul</h3>
+            <ul>
+                <li>
+                    <a href="#">Mis datos</a>
+                    <a href="#">Mensajes</a>
+                    <a href="#">Salir</a>
+                </li>
+            </ul>
+        </template>
+        <h4 v-else>No estas Conectado  :(</h4>
+
+        <pre>{{$data}}</pre>
+    </main>
+    <script type="text/javascript" src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+    <script type="text/javascript" src="js/main2.js"></script>
 </body>
+
 </html>

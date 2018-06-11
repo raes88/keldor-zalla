@@ -1,6 +1,7 @@
-const nm = new Vue({
+const vm = new Vue({
 	el:'main',
 	data:{
-		conectado:false,
+		conectado:true,
+		edad:400 ,
 	},
 })
