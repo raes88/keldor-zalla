@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Filtros</title>
+    <script type="text/javascript" src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+    <main>
+    	<input type="search" v-model="busqueda" placeholder="Buscar juego">
+        <ul>
+            <li v-for="(juego,index) in buscarJuegos">
+            	 <!-- mortraria el titulo normal  -->
+                 Indice - {{index}} - {{juego.titulo }} - Al reves -
+            	<!-- Ponemos el titulo al reves con el filtro cargado de Vue1  -->
+                {{juego.titulo | alReves}} -
+               
+            </li>
+        </ul>
+
+        <!-- Barra desplazamiento para modificar el minimo y maximo  -->
+        <input type="range" min="0" max="12" v-model="minimo">
+        <pre>
+        	{{$data}}
+        </pre>
+    </main>
+    <script type="text/javascript" src="js/mainR7.js"></script>
+</body>
+
+</html>
