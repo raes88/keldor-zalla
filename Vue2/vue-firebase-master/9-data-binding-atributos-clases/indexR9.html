@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Data Binding</title>
+    <script type="text/javascript" src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+    <style>
+    li {
+        cursor: pointer;
+    }
+
+    .completado {
+        text-decoration: line-through;
+    }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Tareas</h1>
+        <h4>Tareas completadas : {{tareasCompletadas.length}}</h4>
+        <ul>
+            <li :class="{completado: tarea.completado}" @click="completarTarea(tarea)" v-for="tarea in tareas">
+                {{tarea.titulo}}
+            </li>
+        </ul>
+        <pre>{{$data}}</pre>
+    </main>
+    <script type="text/javascript" src="js/mainR9.js"></script>
+</body>
+
+</html>
