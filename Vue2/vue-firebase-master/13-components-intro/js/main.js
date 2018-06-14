@@ -6,7 +6,7 @@ Vue.component('mis-tareas', {
                 this.tareas = respuesta.data;
             });
     },
-    data()  {
+    data() {
         return {
             tareas: [],
         }
