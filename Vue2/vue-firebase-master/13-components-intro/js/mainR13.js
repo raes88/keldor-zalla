@@ -1,3 +1,7 @@
+Vue.component('mis-tareas',{
+	props:['tareas'],
+	template: '<ul><li v-for="tarea in tareas">{{tarea.title}}></li></ul>',
+})
 new Vue({
 	el:'main',
 	mounted(){
