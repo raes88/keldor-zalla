@@ -1,6 +1,7 @@
 new Vue({
     el: 'main',
     mounted() {
+        console.log('Estoy montado')
         this.cargarPersonas();
     },
     data: {
@@ -13,5 +14,8 @@ new Vue({
                     this.personas = respuesta.body.results;
                 });
         }
+    },
+    created: function () {
+      console.log('Estoy creado')
     }
 });
