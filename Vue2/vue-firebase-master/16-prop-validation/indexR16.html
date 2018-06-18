@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Validacion Vue2</title>
+    <script type="text/javascript" src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+    <main>
+        <candidato v-for="candidato in candidatos" :nombre="candidato.name.first" :correoe="candidato.email" :imagen="candidato.picture.thumbnail">
+        </candidato>
+        <pre>{{$data}}</pre>
+    </main>
+    <template id="candidato-template">
+        <blockquote>
+            <img :src="imagen" align="rigth">
+            <h1>{{nombre}}</h1>
+            <h2>{{correoe}}</h2>
+            <hr>
+        </blockquote>
+    </template>
+    <script type="text/javascript" src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="js/mainR16.js"></script>
+</body>
+
+</html>
