@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rick and Mortyapi</title>
+</head>
+
+<body>
+	<main>
+		<rickandmortyVue v-for="consulta in consultas"
+		:nombre ="consulta.consApi.resultado.name"
+		:status= "consulta.consApi.resultado.species"
+		:origen="consulta.consApi.resultado.origin.name"
+		:imagen="consulta.consApi.resultado.image"
+		:key="consulta.consApi.id"
+		>	
+	</rickandmortyVue>
+	<pre>{{$data}}</pre>
+	<template id="rickandmorty-template"> 
+		<blockquote>
+			<img :src="imagen" align="rigth">
+			<h1>{{nombre}}</h1>
+			<h2>{{status }}- {{origen}}</h2>
+			<hr>
+		</blockquote>
+		
+	</template>
+
+		
+	</main>
+    <script type="text/javascript" src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   <!--  <script type="text/javascript" src="js/index.js"></script> -->
+    <script type="text/javascript" src="js/rickandmortyapiVue.js"></script>
+</body>
+
+</html>

@@ -9,17 +9,35 @@
 
 <body>
     <main>
-        <candidato v-for="candidato in candidatos" :nombre="candidato.name.first" :correoe="candidato.email" :imagen="candidato.picture.thumbnail">
+    	<!-- necesitamos generar un indice dentro del for con uno de los campos con :key -->
+        <candidato v-for="candidato in candidatos"
+          :nombre="candidato.name.first"
+          :correoe="candidato.email"
+          :imagen="candidato.picture.thumbnail"
+          :location="candidato.location"
+       	  :id="candidato.login.uuid"
+          :key="candidato.login.uuid">
         </candidato>
         <pre>{{$data}}</pre>
     </main>
+
     <template id="candidato-template">
         <blockquote>
             <img :src="imagen" align="rigth">
             <h1>{{nombre}}</h1>
             <h2>{{correoe}}</h2>
+            <h4>Direccion :   
+            {{location.city}} - {{location.street}} / {{location.postcode}}</h4>
+            	<ul>
+            		<li v-for="(value,key,index) in location">
+            			{{key }} - {{value}}
+            			
+            		</li>
+            	</ul> 
+           <!--  <h3>{{id}}</h3> -->
             <hr>
         </blockquote>
+
     </template>
     <script type="text/javascript" src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
