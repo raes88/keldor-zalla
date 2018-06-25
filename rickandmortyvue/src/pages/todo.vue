@@ -1,7 +1,9 @@
 <template>
   <div>
-    <candidato :candidato="persona" v-for="persona in personas" :key="persona.email"/>
+    <candidato :candidato="persona" v-for="persona in personas" :key="persona.id.value"/>
+     <!-- <pre>{{$data}}</pre> -->
   </div>
+
 </template>
 <script>
 import axios from 'axios'
