@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scoped Slots</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <main>
+
+        <mis-tareas :listado="tareas">
+            <template scope="datos">
+                <h1>{{datos.title}}</h1></li>
+            </template>
+        </mis-tareas>
+
+        <mis-tareas :listado="tareas">
+            <template scope="datos">
+                <li>{{datos.title}}</li>
+            </template>
+        </mis-tareas>
+
+        <mis-tareas :listado="tareas">
+            <template scope="datos">
+                <li>🤔{{datos.title}}</li>
+            </template>
+        </mis-tareas>
+
+        <pre>{{$data}}</pre>
+    </main>
+    <template id="mis-tareas-template">
+        <ul>
+            <slot v-for="tarea in listado" :title="tarea.titulo"></slot>
+            <!-- <li v-for="tarea in listado">
+    			{{tarea.titulo}}
+    		</li> -->
+        </ul>
+    </template>
+    <script type="text/javascript" src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+    <script src="js/mainR18.js"></script>
+</body>
+
+</html>

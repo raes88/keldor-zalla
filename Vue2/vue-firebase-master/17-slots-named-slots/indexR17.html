@@ -11,7 +11,10 @@
 
 <body>
     <main>
-        <alerta>
+        <alerta tipo="alerta--exito" posicion="alerta--abajo-derecha">
+        	<template slot="header">Todo Ok :)</template>
+        	<template>Este es el nuevo contenido del alerta</template>
+        	<template slot="footer">Puedes Seguir</template>
         </alerta>
     </main>
     <pre>{{$data}}</pre>
