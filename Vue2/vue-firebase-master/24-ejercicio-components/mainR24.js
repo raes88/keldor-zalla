@@ -1,7 +1,9 @@
 Vue.component('usuarios',{
-	template:'',
+	template:'<div></div>',
 	mounted(){
-		axios.get('https://randomuser.me/api/?results=500')
+		axios.get('https://randomuser.me/api/?results=500').then((datos)=>{
+			console.log(datos)
+		})
 	}
 })
 new Vue({
