@@ -45,6 +45,6 @@
 </script>
 <style scoped>
     li a {
-        color: red;
+        color: #00A8FF;
     }
 </style>

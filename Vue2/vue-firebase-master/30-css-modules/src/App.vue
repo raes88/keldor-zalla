@@ -1,6 +1,6 @@
 <template>
     <!--<h1 :class="[$style.rojo]">Hola CSS Modules</h1>-->
-    <h1 :class="{[$style.subrayado] : subrayado}">Hola CSS Modules</h1>
+    <h1 :class="{[$style.subrayado] :subrayado}">Hola CSS Modules</h1>
 </template>
 
 <script>
