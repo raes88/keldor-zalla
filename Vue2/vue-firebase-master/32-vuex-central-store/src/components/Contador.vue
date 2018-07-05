@@ -11,6 +11,7 @@
         methods: {
             aumentar() {
                 //this.$emit('aumentar');
+                //accedemos ala cantidad y le summamos 1
                 this.$store.state.cantidad++;
             },
             reducir() {
@@ -19,6 +20,7 @@
             }
         },
         computed: {
+            //retorna la propiedad de store (cantidad)
             cantidad() {
                 return this.$store.state.cantidad;
             }
