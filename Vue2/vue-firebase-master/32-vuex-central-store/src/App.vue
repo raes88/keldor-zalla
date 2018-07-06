@@ -1,4 +1,5 @@
 <template>
+    <!--    <contador :cantidad="cantidad"
               @aumentar="cantidad++"
               @reducir="cantidad&#45;&#45;">
     </contador>-->
