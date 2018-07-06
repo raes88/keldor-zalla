@@ -11,7 +11,7 @@
         methods: {
             aumentar() {
                 //this.$emit('aumentar');
-                //accedemos ala cantidad y le summamos 1
+                //accedemos ala cantidad de store.js y le sumamos 1
                 this.$store.state.cantidad++;
             },
             reducir() {
