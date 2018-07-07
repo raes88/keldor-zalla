@@ -34,8 +34,18 @@ Vue.component('carrito-compra',{
 		}
 	},
 	created(){
-		eventBus.$on('anadir',(precio)=>{console.log(precio)})
-		eventBus.$on('eliminar',(precio)=>{console.error(precio)})
+		eventBus.$on('anadir',(precio)=>{
+			if (this.total >= 0) {
+                this.total += precio;
+                this.cantidadProductos++;
+            }
+		})
+		eventBus.$on('eliminar',(precio)=>{
+			if (this.total > 0) {
+                this.total -= precio;
+                this.cantidadProductos--;
+            }
+		})
 
 	}
 

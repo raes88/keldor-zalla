@@ -20,3 +20,9 @@
         components: {Tareas}
     }
 </script>
+</script>
+<style scoped>
+    li a {
+        color: #19ED3C;
+    }
+</style>
