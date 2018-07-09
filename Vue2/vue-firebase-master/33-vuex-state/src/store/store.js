@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+//vue hace uso de vuexS
 Vue.use(Vuex);
 
 //fuente de datos
