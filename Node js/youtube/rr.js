@@ -6,9 +6,11 @@ const mi = require('./mito')
 mi.saludar()
 console.log(mi.subs)
 let suma = mi.sumar(10, 5)
+
 console.log(suma)
 console.log(`el resultado de la suma es : ${mi.sumar(10,5)}`)
 console.log(`El resultado de la segunda suma es : ${mi.mostrar(8)}`)
+
 setTimeout(() => {
     console.log('Termine')
 }, 2000);
