@@ -20,11 +20,17 @@ console.log('finalizado')
     
 })*/
 
-fs.appendFile('data.txt', '\n Gracias por suscribierte', (error) => {
+/*fs.appendFile('data.txt', '\n Gracias por suscribierte', (error) => {
     if (error) console.log(`Error ${error}`)
 })
 
 fs.unlink('data1.txt', (error) => {
     if (error) throw error
     console.log('Eliminado')
+})*/
+fs.createReadStream('data.txt').pipe(fs.createWriteStream('data3.txt'))
+fs.readdir('./../../basico',(error,files)=>{
+    files.forEach(file=>{
+        console.log(file)
+    })
 })
