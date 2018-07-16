@@ -22,7 +22,7 @@ console.log('finalizado')
 
 /*fs.appendFile('data.txt', '\n Gracias por suscribierte', (error) => {
     if (error) console.log(`Error ${error}`)
-})
+})  
 
 fs.unlink('data1.txt', (error) => {
     if (error) throw error
