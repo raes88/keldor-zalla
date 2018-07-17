@@ -20,7 +20,7 @@ if (config.env === 'development') {
   app.use(logger('dev'));
 }
 
-// parse body params and attache them to req.body
+// analizar los parámetros del cuerpo y adjuntarlos a req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
