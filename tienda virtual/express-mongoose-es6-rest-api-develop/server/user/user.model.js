@@ -5,11 +5,22 @@ const APIError = require('../helpers/APIError');
 
 /**
  * User Schema
+ *  email: { type: String, unique: true, lowercase: true },
+  displayName: String,
+  avatar: String,
+  password: { type: String, select: false },
+  signupDate: { type: Date, default: Date.now() },
+  lastLogin: Date
  */
 const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true
+  },
+  role: {
+    type: String,
+    enum: ['ADMIN', 'CLIENT'],
+    default: 'CLIENT'
   },
   mobileNumber: {
     type: String,
@@ -19,6 +30,43 @@ const UserSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  versionKey: false,
+  direccion: {
+    calle: {
+      type: String,
+      required: true,
+      lowercase: true,
+      trim: true
+    },
+    cp: {
+      type: Number,
+      required: true
+    },
+    numero: {
+      type: Number,
+      required: true
+    },
+    provincia: {
+      type: String,
+      required: true,
+      lowercase: true,
+      trim: true
+    },
+    localidad: {
+      type: String,
+      required: true,
+      lowercase: true,
+      trim: true
+    }
+  },
+  email: {
+    type: String,
+    required: true
   }
 });
 

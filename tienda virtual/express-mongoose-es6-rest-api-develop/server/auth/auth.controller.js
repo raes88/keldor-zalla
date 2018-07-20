@@ -3,12 +3,10 @@ const httpStatus = require('http-status');
 const APIError = require('../helpers/APIError');
 const config = require('../../config/config');
 
-// sample user, used for authentication
 const user = {
   username: 'react',
   password: 'express'
 };
-
 /**
  * Returns jwt token if valid username and password is provided
  * @param req
@@ -17,8 +15,8 @@ const user = {
  * @returns {*}
  */
 function login(req, res, next) {
-  // Ideally you'll fetch this from the db
-  // Idea here was to show how jwt works with simplicity
+  // Buscar en la BBDD un usuario con el username
+  // Comprobar que las password coincidan
   if (req.body.username === user.username && req.body.password === user.password) {
     const token = jwt.sign({
       username: user.username

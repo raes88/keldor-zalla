@@ -49,7 +49,17 @@ describe('## Misc', () => {
       request(app)
         .post('/api/users')
         .send({
-          mobileNumber: '1234567890'
+          mobileNumber: '1234567890',
+          role: 'CLIENT',
+          password: '12345678',
+          direccion: {
+            calle: 'calle',
+            cp: 31234,
+            numero: 1,
+            provincia: 'bizkaia',
+            localidad: 'localidad'
+          },
+          email: 'email@email.com'
         })
         .expect(httpStatus.BAD_REQUEST)
         .then((res) => {

@@ -21,7 +21,17 @@ after((done) => {
 describe('## User APIs', () => {
   let user = {
     username: 'KK123',
-    mobileNumber: '1234567890'
+    mobileNumber: '1234567890',
+    role: 'CLIENT',
+    password: '12345678',
+    direccion: {
+      calle: 'calle',
+      cp: 31234,
+      numero: 1,
+      provincia: 'bizkaia',
+      localidad: 'localidad'
+    },
+    email: 'email@email.com'
   };
 
   describe('# POST /api/users', () => {
