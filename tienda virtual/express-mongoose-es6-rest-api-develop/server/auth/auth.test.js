@@ -15,8 +15,8 @@ describe('## Auth APIs', () => {
   };
 
   const invalidUserCredentials = {
-    username: 'react',
-    password: 'IDontKnow'
+    username: 'Raul',
+    password: '855'
   };
 
   let jwtToken;
