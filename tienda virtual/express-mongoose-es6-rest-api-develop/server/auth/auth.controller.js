@@ -2,11 +2,9 @@ const jwt = require('jsonwebtoken');
 const httpStatus = require('http-status');
 const APIError = require('../helpers/APIError');
 const config = require('../../config/config');
+const User = require('./../user/user.model');
 
-const user = {
-  username: 'react',
-  password: 'express'
-};
+
 /**
  * Returns jwt token if valid username and password is provided
  * @param req
@@ -15,20 +13,30 @@ const user = {
  * @returns {*}
  */
 function login(req, res, next) {
-  // Buscar en la BBDD un usuario con el username
-  // Comprobar que las password coincidan
-  if (req.body.username === user.username && req.body.password === user.password) {
-    const token = jwt.sign({
-      username: user.username
-    }, config.jwtSecret);
-    return res.json({
-      token,
-      username: user.username
-    });
-  }
+  User.findOne({
+    username: req.body.username
+  }, (err, usuario) => {
+    if (!usuario) {
+      return res.status(500).send({
+        message: 'El usuario no existe'
+      });
+    }
+    if (usuario) {
+      // Comprobar que las password coincidan
+      if (req.body.password === usuario.password) {
+        const token = jwt.sign({
+          username: usuario.username
+        }, config.jwtSecret);
+        return res.json({
+          token,
+          username: usuario.username
+        });
+      }
 
-  const err = new APIError('Authentication error', httpStatus.UNAUTHORIZED, true);
-  return next(err);
+      const err2 = new APIError('Authentication error', httpStatus.UNAUTHORIZED, true);
+      return next(err2);
+    }
+  });
 }
 
 /**

@@ -3,15 +3,7 @@ const mongoose = require('mongoose');
 const httpStatus = require('http-status');
 const APIError = require('../helpers/APIError');
 
-/**
- * User Schema
- *  email: { type: String, unique: true, lowercase: true },
-  displayName: String,
-  avatar: String,
-  password: { type: String, select: false },
-  signupDate: { type: Date, default: Date.now() },
-  lastLogin: Date
- */
+
 const UserSchema = new mongoose.Schema({
   username: {
     type: String,

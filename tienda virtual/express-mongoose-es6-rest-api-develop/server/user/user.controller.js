@@ -27,12 +27,40 @@ function get(req, res) {
  * @returns {User}
  */
 function create(req, res, next) {
-  const user = new User(req.body);
-
-  user.save()
-    .then(savedUser => res.json(savedUser))
-    .catch(e => next(e));
+  User.findOne({ username: req.body.username }, (err, user) => {
+    if (!user) {
+      const newUser = new User(req.body);
+      newUser.save()
+        .then(savedUser => res.json(savedUser))
+        .catch(e => next(e));
+    }
+    if (user) {
+      return res.status(500).send({
+        message: 'El usuario  ya existe'
+      });
+    }
+  });
 }
+
+/*
+  User.findById(nombre, (err, user) => {
+        if (!user) return res.status(404).send({
+          _user: save()
+            .then(savedUser => res.json(savedUser))
+            .catch(e => next(e)),
+          get user() {
+            return this._user;
+          },
+          set user(value) {
+            this._user = value;
+          },
+        })
+        if (user) return res.status(500).send({
+          message: 'El usuario  ya existe'
+        });
+      }
+*/
+
 
 /**
  * Update existing user
@@ -44,6 +72,10 @@ function update(req, res, next) {
   const user = req.user;
   user.username = req.body.username;
   user.mobileNumber = req.body.mobileNumber;
+  user.password = req.body.password;
+  user.email = req.body.email;
+  user.direccion = req.body.direccion;
+  user.role = req.body.role;
 
   user.save()
     .then(savedUser => res.json(savedUser))
