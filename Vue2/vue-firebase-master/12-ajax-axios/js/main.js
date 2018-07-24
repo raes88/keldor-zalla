@@ -14,10 +14,10 @@ new Vue({
                 .then((respuesta) => {
                     this.personas = respuesta.data.results;
                 });
-            // axios.get('https://randomuser.me/api/?results=500')
-            //     .then((respuesta) => {
-            //         this.personas = respuesta.data.results;
-            //     });
+             axios.get('https://randomuser.me/api/?results=500')
+                 .then((respuesta) => {
+                    this.personas = respuesta.data.results;
+                });
         }
     }
 });

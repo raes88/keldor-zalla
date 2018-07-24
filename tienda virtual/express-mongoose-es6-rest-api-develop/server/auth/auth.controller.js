@@ -13,6 +13,7 @@ const User = require('./../user/user.model');
  * @returns {*}
  */
 function login(req, res, next) {
+  console.log(req.body)
   User.findOne({
     username: req.body.username
   }, (err, usuario) => {

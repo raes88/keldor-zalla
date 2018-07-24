@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "Babel": "0.0.1",
+    "axios": "^0.18.0",
     "babel": "^6.23.0",
     "bootstrap": "^4.1.2",
     "jquery": "^3.3.1",
