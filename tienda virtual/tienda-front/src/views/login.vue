@@ -21,30 +21,27 @@ export default {
   methods: {
     login () {
       console.log('hola')
-      axios.post('http://localhost:4040/api/auth/login ', this.input)
-        .then((respuesta) => {
-          console.log(respuesta)
-          if (this.input.username !== '' && this.input.password !== '') {
-            if (
-              this.input.username === respuesta.data.username &&
-              this.input.password === respuesta.data.password
-            ) {
+      if (this.input.username !== '' && this.input.password !== '') {
+        axios.post('http://localhost:4040/api/auth/login ', this.input)
+          .then((respuesta) => {
+            console.log(respuesta)
+            if (respuesta.status === 200) {
+              console.log('logeado')
               this.$emit('authenticated', true)
               this.$router.replace({ name: 'secure' })
             } else {
               console.log('The username and / or password is incorrect')
             }
-          } else {
-            console.log('A username and password must be present')
-          }
-        })
-        .catch(e => {
-          console.log(e)
-        })
+          })
+          .catch(e => {
+            console.log(e)
+          })
+      } else {
+        console.log('A username and password must be present')
+      }
     }
   }
 }
-
 </script>
 <style scoped>
 #login {
