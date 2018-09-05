@@ -20,24 +20,22 @@ export default {
   },
   methods: {
     login () {
-      console.log('hola')
       if (this.input.username !== '' && this.input.password !== '') {
         axios.post('http://localhost:4040/api/auth/login ', this.input)
           .then((respuesta) => {
             console.log(respuesta)
             if (respuesta.status === 200) {
-              console.log('logeado')
-              this.$emit('authenticated', true)
-              this.$router.replace({ name: 'secure' })
+              this.$router.push({ name: 'home' })
             } else {
               console.log('The username and / or password is incorrect')
             }
           })
           .catch(e => {
+            alert('Usuario o contraseña erroneo o no existe')
             console.log(e)
           })
       } else {
-        console.log('A username and password must be present')
+        alert('Usuario o contraseña vacio')
       }
     }
   }
