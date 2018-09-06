@@ -8,7 +8,7 @@ export const store = new Vuex.Store({
             {nombre: 'Aprender Vue Routing', completado: false},
             {nombre: 'Organizar lecciones restantes', completado: false},
             {nombre: 'Grabar lecciones mini curso ES6', completado: false},
-            {nombre: 'Preparar landing page curso', completado: false},
+            {nombre: 'Preparar landing page curso', completado: true},
             {nombre: 'Diseñar acciones de marketing', completado: true},
         ]
     },

@@ -2,7 +2,7 @@
     <main>
         <tareas-restantes></tareas-restantes>
         <ul>
-            <li v-for="tarea in tareas">{{ tarea.nombre }}</li>
+            <li v-for="tarea in tareas" :key="tarea.id">{{ tarea.nombre }}</li>
         </ul>
     </main>
 </template>
