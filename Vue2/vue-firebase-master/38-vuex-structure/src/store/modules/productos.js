@@ -5,7 +5,7 @@ const productos = [
 ];
 
 const mutations = {
-    anadirProducto: (state, producto) => state.productos.unshift(producto),
+    anadirProducto: (state, producto) => productos.unshift(producto),
 };
 
 export default {
