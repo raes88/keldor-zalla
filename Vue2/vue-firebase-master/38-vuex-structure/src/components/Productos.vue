@@ -8,7 +8,7 @@
         </form>
         <hr>
         <ul>
-            <li v-for="(producto, indice) in productos">
+            <li v-for="(producto, indice) in productos" :key=indice.id>
                 {{ producto.nombre }} - {{ producto.precio.toFixed(2) + ' €' }}
                 <button @click="comprarProducto(indice)">+</button>
             </li>

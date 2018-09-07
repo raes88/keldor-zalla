@@ -3,7 +3,7 @@
         <h2>Carro de la compra</h2>
         <h3>Total compra: {{ totalCompra.toFixed(2) }} € </h3>
         <ul>
-            <li v-for="(producto, indice) in carro">
+            <li v-for="(producto, indice) in carro" :key=indice.id>
                 {{ producto.nombre }}
                 <button @click="eliminarProducto(indice)">X</button>
             </li>
