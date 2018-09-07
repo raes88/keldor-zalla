@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <h1>Hola</h1>
+    <h1>Hola {{$store.state.username}}</h1>
   </div>
 </template>
 <script>
