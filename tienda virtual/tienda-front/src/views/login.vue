@@ -4,6 +4,7 @@
     <input type="text" name="username" v-model="input.username" placeholder="Username" />
     <input type="password" name="password" v-model="input.password" placeholder="Password" />
     <button type="button" v-on:click="login()">Login</button>
+    <button type="button" v-on:click="nuevoUsuario()">Usuario Nuevo</button>
   </div>
 </template>
 <script>
@@ -38,15 +39,19 @@ export default {
       } else {
         alert('Usuario o contraseña vacio')
       }
+    },
+    nuevoUsuario () {
+      this.$router.push({ name: 'registro' })
     }
   }
 }
+
 </script>
 <style scoped>
 #login {
   width: 500px;
-  border: 1px solid #cccccc;
-  background-color: #ffffff;
+  border: 1px solid #212221;
+  background-color: #BCB7B7;
   margin: auto;
   margin-top: 200px;
   padding: 20px;
