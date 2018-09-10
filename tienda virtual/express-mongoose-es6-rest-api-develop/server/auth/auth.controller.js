@@ -30,7 +30,9 @@ function login(req, res, next) {
         }, config.jwtSecret);
         return res.json({
           token,
-          username: usuario.username
+          username: usuario.username,
+          role: usuario.role,
+          email: usuario.email
         });
       }
 

@@ -6,15 +6,19 @@ import router from './../router'
 Vue.use(Vuex)
 
 const state = {
-  username: ''
+  username: '',
+  role: '',
+  email: ''
 }
 
 const actions = {
-  login ({ commit, state }, user) {
-    axios.post('http://localhost:4040/api/auth/login', user)
+  login ({ commit, state }, user, role) {
+    axios.post('http://localhost:4040/api/auth/login', user, role)
       .then((respuesta) => {
-      	console.log(respuesta)
+        console.log(respuesta)
         commit('setUsername', respuesta.data.username)
+        commit('setRole', respuesta.data.role)
+        commit('setEmail', respuesta.data.email)
         if (respuesta.status === 200) {
           router.push({ name: 'home' })
         } else {
@@ -30,8 +34,16 @@ const actions = {
 
 const mutations = {
   setUsername (state, username) {
-  	console.log('hola ' + username)
+    console.log('hola ' + username)
     state.username = username
+  },
+  setRole (state, role) {
+    console.log('role ' + role)
+    state.role = role
+  },
+  setEmail (state, email) {
+    console.log('email ' + email)
+    state.email = email
   }
 }
 
