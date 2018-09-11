@@ -12,19 +12,19 @@
         <fieldset id="direccion">
           <legend>Direccion:</legend>
           Calle:
-          <input id="calle" type="text" name="calle" v-model="input.direccion.calle" placeholder="Calle" /> Num :
-          <input id="direcNum" type="number" name="numero" v-model="input.direccion.numero" placeholder="Num" /> Cp :
-          <input id="direcNum" type="number" name="cp" v-model="input.direccion.cp" placeholder="CP" /> Local. :
-          <input id="direcText" type="text" name="localidad" v-model="input.direccion.localidad" placeholder="Localidad" /> Prov. :
-          <input id="direcText" type="text" name="provincia" v-model="input.direccion.provincia" placeholder="Provincia" />
+          <input id="calle" type="text" name="calle" v-model="input.direccion.calle" placeholder="Calle" required/> Num :
+          <input id="direcNum" type="number" name="numero" v-model="input.direccion.numero" placeholder="Num" required/> Cp :
+          <input id="direcNum" type="number" name="cp" v-model="input.direccion.cp" placeholder="CP" required/> Local. :
+          <input id="direcText" type="text" name="localidad" v-model="input.direccion.localidad" placeholder="Localidad" required/> Prov. :
+          <input id="direcText" type="text" name="provincia" v-model="input.direccion.provincia" placeholder="Provincia" required/>
         </fieldset>
         <fieldset>
           Telef. :
           <input id="role" type="tel" name="telefono" v-model="input.mobileNumber" placeholder="Telefono" required /> Email :
           <input id="role" type="text" name="email" v-model="input.email" placeholder="Email" required/> Role :
-          <select id="role">
-            <option value="cliente">Cliente</option>
-            <option value="admin">Adminstrador</option>
+          <select id="role" v-model="input.role" required>
+            <option value="CLIENT">Cliente</option>
+            <option value="ADMIN">Adminstrador</option>
           </select>
           <br>
         </fieldset>
@@ -62,6 +62,18 @@ export default {
   methods: {
     altaUsuario () {
       axios.post('http://localhost:4040/api/users ', this.input)
+        .then((respuesta) => {
+          console.log(respuesta)
+          if (respuesta.status === 200) {
+            this.$store.dispatch('login', this.input)
+          } else {
+            console.log('error')
+          }
+        })
+        .catch(e => {
+          alert('Rellena todos los campos')
+          console.log(e)
+        })
     }
   }
 }
@@ -109,11 +121,6 @@ input {
 
 select {
   width: 480px;
-}
-
-input[type=number]::-webkit-inner-spin-button input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 #direcNum {
