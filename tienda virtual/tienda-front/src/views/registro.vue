@@ -1,36 +1,59 @@
 <template>
-  <form>
-    <div id="registro">
-      <h1>Registro</h1>
-      <div id="campos">
-        <fieldset>
-          <h4 id="titulos">Nombre</h4>
-          <input id="texto" type="text" name="username" v-model="input.username" placeholder="Nombre" required />
-          <h4 id="titulos">Password</h4>
-          <input id="texto" type="password" name="password" v-model="input.password" placeholder="Password" required />
-        </fieldset>
-        <fieldset id="direccion">
-          <legend>Direccion:</legend>
-          Calle:
-          <input id="calle" type="text" name="calle" v-model="input.direccion.calle" placeholder="Calle" required/> Num :
-          <input id="direcNum" type="number" name="numero" v-model="input.direccion.numero" placeholder="Num" required/> Cp :
-          <input id="direcNum" type="number" name="cp" v-model="input.direccion.cp" placeholder="CP" required/> Local. :
-          <input id="direcText" type="text" name="localidad" v-model="input.direccion.localidad" placeholder="Localidad" required/> Prov. :
-          <input id="direcText" type="text" name="provincia" v-model="input.direccion.provincia" placeholder="Provincia" required/>
-        </fieldset>
-        <fieldset>
-          Telef. :
-          <input id="role" type="tel" name="telefono" v-model="input.mobileNumber" placeholder="Telefono" required /> Email :
-          <input id="role" type="text" name="email" v-model="input.email" placeholder="Email" required/> Role :
-          <select id="role" v-model="input.role" required>
-            <option value="CLIENT">Cliente</option>
-            <option value="ADMIN">Adminstrador</option>
-          </select>
-          <br>
-        </fieldset>
-        <div id="botones">
-          <button type="button" v-on:click="altaUsuario()">Alta De Usuario</button>
-          <button type="reset">Resetear Formulario</button>
+  <form class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center">
+      <div class="shadow p-3 mb-5 bg-light rounded" id="registro">
+        <h1 class="d-flex justify-content-center"><p class="font-weight-bold">Registro</p></h1>
+        <div id="campos">
+          <fieldset class="shadow p-3 mb-5 bg-light rounded">
+            <div class="form-group">
+              <div class="d-flex justify-content-around">
+                <label for="formGroupExampleInput">Nombre:</label>
+                <input type="text" class="form-control"  name="username" v-model="input.username" placeholder="Nombre" required />
+                <label for="formGroupExampleInput">Password:</label>
+                <input id="password" class="form-control"  type="password" name="password" v-model="input.password" placeholder="Password" required />
+              </div>
+            </div>
+          </fieldset>
+          <fieldset id="direccion" class="shadow p-3 mb-5 bg-light rounded">
+            <div class="form-group">
+              <h3 class="d-flex justify-content-center">
+                <p class="font-weight-bold">Direccion</p>
+              </h3>
+              <div class="form-group">
+                <div class="d-flex justify-content-around">
+                  <label for="formGroupExampleInput">Calle:</label>
+                  <input id="calle" class="form-control" type="text" name="calle" v-model="input.direccion.calle" placeholder="Calle" required/>
+                  <label for="formGroupExampleInput">Num:</label>
+                  <input id="direcNum" class="form-control" type="number" name="numero" v-model="input.direccion.numero" placeholder="Num" required/>
+                </div>
+                <div class="d-flex justify-content-around">
+                  <label for="formGroupExampleInput">Cp:</label>
+                  <input id="direcNum" class="form-control" type="number" name="cp" v-model="input.direccion.cp" placeholder="CP" required/>
+                  <label for="formGroupExampleInput">Local.:</label>
+                  <input id="direcText" class="form-control" type="text" name="localidad" v-model="input.direccion.localidad" placeholder="Localidad" required/>
+                  <label for="formGroupExampleInput">Prov.:</label>
+                  <input id="direcText" class="form-control" type="text" name="provincia" v-model="input.direccion.provincia" placeholder="Provincia" required/>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="shadow p-3 mb-5 bg-light rounded">
+            <div class="d-flex justify-content-around">
+              <label for="formGroupExampleInput">Telf:</label>
+              <input id="tel" class="form-control" type="tel" name="telefono" v-model="input.mobileNumber" placeholder="Telefono" required />
+              <label for="formGroupExampleInput">Email:</label>
+              <input id="email" class="form-control" type="text" name="email" v-model="input.email" placeholder="Email" required/>
+              <label for="formGroupExampleInput">Role:</label>
+              <select id="role" class="form-control" v-model="input.role" required>
+                <option value="CLIENT">Cliente</option>
+                <option value="ADMIN">Adminstrador</option>
+              </select>
+            </div>
+          </fieldset>
+          <div id="botones" class="d-flex justify-content-center">
+            <button type="button" class="btn btn-outline-secondary" v-on:click="altaUsuario()">Alta De Usuario</button>
+            <button type="reset" class="btn btn-outline-secondary">Resetear Formulario</button>
+          </div>
         </div>
       </div>
     </div>
@@ -80,15 +103,28 @@ export default {
 
 </script>
 <style scoped>
-h1 {
-  text-align: center;
+label {
+  margin: 7px;
 }
 
+#direcNum {
+  margin-bottom: 20px;
+  width: 250px;
+}
+
+button {
+  margin-right: 10px;
+}
+
+#password{
+  width:250px;
+}
+/*
 #registro {
   align-content: center;
   width: 500px;
   border: 1px solid #212221;
-  background-color: #BCB7B7;
+  background-color: #433A3A;
   margin: auto;
   margin-top: 80px;
   padding: 20px;
@@ -155,6 +191,6 @@ fieldset {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
-}
+}*/
 
 </style>

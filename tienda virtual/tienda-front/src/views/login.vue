@@ -1,10 +1,12 @@
 <template>
-  <div id="login">
-    <h1>Login</h1>
-    <input type="text" name="username" v-model="input.username" placeholder="Username" />
-    <input type="password" name="password" v-model="input.password" placeholder="Password" />
-    <button type="button" v-on:click="login()">Login</button>
-    <button type="button" v-on:click="nuevoUsuario()">Usuario Nuevo</button>
+  <div class="d-flex justify-content-center">
+    <div class="shadow p-3 mb-5 bg-light rounded">
+      <h1 class="d-flex justify-content-center"><p class="font-weight-bold">Login</p></h1>
+      <input type="text" name="username" v-model="input.username" placeholder="Username" />
+      <input type="password" name="password" v-model="input.password" placeholder="Password" />
+      <button type="button" class="btn btn-outline-secondary" v-on:click="login()">Login</button>
+      <button type="button" class="btn btn-outline-secondary" v-on:click="nuevoUsuario()">Usuario Nuevo</button>
+    </div>
   </div>
 </template>
 <script>
