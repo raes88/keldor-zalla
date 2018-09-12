@@ -1,6 +1,6 @@
 <template>
-  <div class="d-flex justify-content-center">
-    <div class="shadow p-3 mb-5 bg-light rounded">
+  <div id="container" class="d-flex justify-content-center">
+    <div id="menu" class="shadow p-3 mb-5 bg-light rounded">
       <h1 class="d-flex justify-content-center"><p class="font-weight-bold">Login</p></h1>
       <input type="text" name="username" v-model="input.username" placeholder="Username" />
       <input type="password" name="password" v-model="input.password" placeholder="Password" />
@@ -50,13 +50,12 @@ export default {
 
 </script>
 <style scoped>
-#login {
-  width: 500px;
-  border: 1px solid #212221;
-  background-color: #BCB7B7;
-  margin: auto;
-  margin-top: 200px;
-  padding: 20px;
+#container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -400px;
+  margin-left: -350px;
 }
 
 </style>
