@@ -17,7 +17,7 @@ router.route('/:productoId')
   .get(producCtrl.get)
 
   /** PUT /api/productos/:productoId - Update producto */
-  .put(validate(paramValidation.updateUser), producCtrl.update)
+  .put(validate(paramValidation.updateProducto), producCtrl.update)
 
   /** DELETE /api/productos/:productoId - Delete producto */
   .delete(producCtrl.remove);

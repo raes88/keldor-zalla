@@ -27,8 +27,10 @@ function get(req, res) {
  * @returns {Productos}
  */
 function create(req, res, next) {
+  console.log('created')
   Productos.findOne({ producName: req.body.producName }, (err, producto) => {
     if (!producto) {
+      console.log('created')
       const newProduc = new Productos(req.body);
       newProduc.save()
         .then(savedProduc => res.json(savedProduc))
@@ -77,6 +79,7 @@ function update(req, res, next) {
   producto.producCoste = req.body.producCoste;
   producto.producDescripcion = req.body.producDescripcion;
   producto.producImagen = req.body.producImagen;
+  producto.modifFecha = new Date();
 
   producto.save()
     .then(savedProduc => res.json(savedProduc))
@@ -84,7 +87,7 @@ function update(req, res, next) {
 }
 
 /**
- * Get uproducto list.
+ * Get producto list.
  * @property {number} req.query.skip - Number of productos to be skipped.
  * @property {number} req.query.limit - Limit number of productos to be returned.
  * @returns {Productos[]}

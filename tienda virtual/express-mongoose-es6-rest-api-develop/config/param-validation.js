@@ -32,6 +32,22 @@ module.exports = {
     }
   },
 
+// UPDATE /api/productos/:productoId
+  updateProducto: {
+   body: {
+      producName: Joi.string().required(),
+      categoria: Joi.string(),
+      producPrecio: Joi.number().required(),
+      distribuidor: Joi.string(),
+      producCoste: Joi.number().required(),
+      producDescripcion: Joi.string().required(),
+      producImagen: Joi.string(),
+    },
+    params: {
+      productoId: Joi.string().hex().required()
+    }
+  },
+
   // UPDATE /api/users/:userId
   updateUser: {
     body: {

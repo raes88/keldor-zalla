@@ -45,6 +45,7 @@ if (config.env === 'development') {
     colorStatus: true // Color the status code (default green, 3XX cyan, 4XX yellow, 5XX red).
   }));
 }
+app.use(express.static('public'));
 
 // mount all routes on /api path
 app.use('/api', routes);

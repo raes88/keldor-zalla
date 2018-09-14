@@ -31,12 +31,15 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  versionKey: false,
   producImagen: {
     type: String,
+  },
+  modifFecha: {
+    type: Date,
+    default: Date.now,
+    required: true
   }
-
-});
+}, { versionKey: false });
 
 /**
  * Add your
@@ -66,15 +69,15 @@ UserSchema.statics = {
         if (producto) {
           return producto;
         }
-        const err = new APIError('No such producto exists!', httpStatus.NOT_FOUND);
+        const err = new APIError('El producto no existe!', httpStatus.NOT_FOUND);
         return Promise.reject(err);
       });
   },
 
   /**
-   * List users in descending order of 'createdAt' timestamp.
-   * @param {number} skip - Number of users to be skipped.
-   * @param {number} limit - Limit number of users to be returned.
+   * List productos in descending order of 'createdAt' timestamp.
+   * @param {number} skip - Number of productos to be skipped.
+   * @param {number} limit - Limit number of productos to be returned.
    * @returns {Promise<Productos[]>}
    */
   list({ skip = 0, limit = 50 } = {}) {
