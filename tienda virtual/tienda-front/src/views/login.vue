@@ -54,7 +54,7 @@ export default {
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-top: -400px;
+  margin-top: -300px;
   margin-left: -350px;
 }
 

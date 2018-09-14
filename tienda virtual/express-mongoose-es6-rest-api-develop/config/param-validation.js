@@ -4,7 +4,7 @@ module.exports = {
   // POST /api/users
   createUser: {
     body: {
-      username: Joi.string().required(),
+      producName: Joi.string().required(),
       mobileNumber: Joi.string().regex(/^[1-9][0-9]{9}$/).required(),
       role: Joi.string().valid(['ADMIN', 'CLIENT']).required(),
       password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
@@ -16,6 +16,19 @@ module.exports = {
         provincia: Joi.string().required(),
         localidad: Joi.string().required()
       })
+    }
+  },
+
+  // POST /api/productos
+  createProduc: {
+    body: {
+      producName: Joi.string().required(),
+      categoria: Joi.string(),
+      producPrecio: Joi.number().required(),
+      distribuidor: Joi.string(),
+      producCoste: Joi.number().required(),
+      producDescripcion: Joi.string().required(),
+      producImagen: Joi.string(),
     }
   },
 

@@ -140,7 +140,7 @@ form {
  top: 50%;
  width: 950px;
  height: 500px;
- margin-top: -340px;
+ margin-top: -300px;
  margin-left: -475px;
 }
 
