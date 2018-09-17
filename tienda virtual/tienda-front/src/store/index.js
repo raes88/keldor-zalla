@@ -8,7 +8,8 @@ Vue.use(Vuex)
 const state = {
   username: '',
   role: '',
-  email: ''
+  email: '',
+  auth: false
 }
 
 const actions = {
@@ -19,9 +20,11 @@ const actions = {
         commit('setUsername', respuesta.data.username)
         commit('setRole', respuesta.data.role)
         commit('setEmail', respuesta.data.email)
+        commit('setAuth', true)
         if (respuesta.status === 200) {
           router.push({ name: 'home' })
         } else {
+          commit('setAuth', false)
           console.log('The username and / or password is incorrect')
         }
       })
@@ -44,6 +47,9 @@ const mutations = {
   setEmail (state, email) {
     console.log('email ' + email)
     state.email = email
+  },
+  setAuth (state, bool) {
+    state.auth = bool
   }
 }
 
