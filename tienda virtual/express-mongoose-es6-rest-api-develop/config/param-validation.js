@@ -4,7 +4,7 @@ module.exports = {
   // POST /api/users
   createUser: {
     body: {
-      producName: Joi.string().required(),
+      username: Joi.string().required(),
       mobileNumber: Joi.string().regex(/^[1-9][0-9]{9}$/).required(),
       role: Joi.string().valid(['ADMIN', 'CLIENT']).required(),
       password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),

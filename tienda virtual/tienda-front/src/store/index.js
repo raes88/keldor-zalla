@@ -22,7 +22,11 @@ const actions = {
         commit('setEmail', respuesta.data.email)
         commit('setAuth', true)
         if (respuesta.status === 200) {
-          router.push({ name: 'home' })
+          if (respuesta.data.role === 'ADMIN') {
+            router.push({ name: 'admin' })
+          } else {
+            router.push({ name: 'cliente' })
+          }
         } else {
           commit('setAuth', false)
           console.log('The username and / or password is incorrect')

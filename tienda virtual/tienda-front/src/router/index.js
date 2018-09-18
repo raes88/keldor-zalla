@@ -4,6 +4,7 @@ import login from '../views/login'
 import home from '../views/home'
 import registro from '../views/registro'
 import admin from '../views/admin'
+import cliente from '../views/cliente'
 
 Vue.use(Router)
 
@@ -14,6 +15,16 @@ export default new Router({
       name: 'home',
       component: home,
       meta: {
+        requiresAuth: false,
+        adminAuth: false,
+        clientAuth: false
+      }
+    },
+    {
+      path: '/cliente',
+      name: 'cliente',
+      component: cliente,
+      meta: {
         requiresAuth: true,
         adminAuth: false,
         clientAuth: true
@@ -23,6 +34,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: login
+    },
+    {
+      path: '/',
+      name: 'home',
+      component: home
     },
     {
       path: '/registro',

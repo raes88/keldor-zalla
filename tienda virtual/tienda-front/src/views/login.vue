@@ -2,10 +2,11 @@
   <div id="container" class="d-flex justify-content-center">
     <div id="menu" class="shadow p-3 mb-5 bg-light rounded">
       <h1 class="d-flex justify-content-center"><p class="font-weight-bold">Login</p></h1>
-      <input type="text" name="username" v-model="input.username" placeholder="Username" />
-      <input type="password" name="password" v-model="input.password" placeholder="Password" />
-      <button type="button" class="btn btn-outline-secondary" v-on:click="login()">Login</button>
-      <button type="button" class="btn btn-outline-secondary" v-on:click="nuevoUsuario()">Usuario Nuevo</button>
+      <input type="text" class="form-control mr-sm-2"  name="username" v-model="input.username" placeholder="Username" />
+      <input type="password" class="form-control mr-sm-2" name="password" v-model="input.password" placeholder="Password" />
+      <button type="button" class="btn btn-outline-success my-2 my-sm-0" v-on:click="login()">Login</button>
+      <button type="button" class="btn btn-outline-success my-2 my-sm-0" v-on:click="nuevoUsuario()">Usuario Nuevo</button>
+       <button type="button" class="btn btn-outline-success my-2 my-sm-0" v-on:click="entrar()">Volver</button>
     </div>
   </div>
 </template>
@@ -44,6 +45,9 @@ export default {
     },
     nuevoUsuario () {
       this.$router.push({ name: 'registro' })
+    },
+    entrar () {
+      this.$router.push({ name: 'home' })
     }
   }
 }
@@ -52,10 +56,18 @@ export default {
 <style scoped>
 #container {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: 40%;
+  top: 15%;
+  /*rigth: 50%;
   margin-top: -300px;
-  margin-left: -350px;
+  margin-left: -350px;*/
+}
+input{
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+button{
+  margin-top: 6px;
 }
 
 </style>

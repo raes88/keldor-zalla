@@ -10,9 +10,9 @@
                 <div class="form-group">
                   <div class="d-flex justify-content-around">
                     <label for="formGroupExampleInput">Nombre:</label>
-                    <input type="text" class="form-control" name="username" v-model="input.username" placeholder="Nombre" required />
+                    <input type="text" class="form-control nombre" name="username" v-model="input.username" placeholder="Nombre" required />
                     <label for="formGroupExampleInput">Password:</label>
-                    <input id="password" class="form-control" type="password" name="password" v-model="input.password" placeholder="Password" required />
+                    <input id="password" class="form-control pass" type="password" name="password" v-model="input.password" placeholder="Password" required />
                   </div>
                 </div>
               </fieldset>
@@ -28,7 +28,7 @@
                       <label for="formGroupExampleInput">Num:</label>
                       <input id="direcNum" class="form-control" type="number" name="numero" v-model="input.direccion.numero" placeholder="Num" required/>
                     </div>
-                    <div class="d-flex justify-content-around">
+                    <div class="d-flex justify-content-around ">
                       <label for="formGroupExampleInput">Cp:</label>
                       <input id="direcCp" class="form-control" type="number" name="cp" v-model="input.direccion.cp" placeholder="CP" required/>
                       <label for="formGroupExampleInput">Local.:</label>
@@ -53,9 +53,9 @@
                 </div>
               </fieldset>
               <div id="botones" class="d-flex justify-content-center">
-                <button type="button" class="btn btn-outline-secondary" v-on:click="altaUsuario()">Alta De Usuario</button>
-                <button type="reset" class="btn btn-outline-secondary">Resetear Formulario</button>
-                <button type="button" class="btn btn-outline-secondary" v-on:click="salir()">Salir</button>
+                <button type="button" class="btn btn-outline-success my-2 my-sm-0" v-on:click="altaUsuario()">Alta De Usuario</button>
+                <button type="reset" class="btn btn-outline-success my-2 my-sm-0">Resetear Formulario</button>
+                <button type="button" class="btn btn-outline-success my-2 my-sm-0" v-on:click="salir()">Salir</button>
 
               </div>
             </div>
@@ -128,6 +128,24 @@ button {
 #password {
   width: 250px;
 }
+#direcCp{
+  width:14%;
+}
+#direcText{
+  width:35%;
+}
+#role{
+  width:35%;
+}
+#tel{
+  width:25%;
+}
+.nombre{
+  width:50%;
+}
+.pass{
+  width:35%;
+}
 
 form {
   display: flex;
@@ -136,12 +154,12 @@ form {
 }
 .container {
  position: absolute;
- left: 50%;
- top: 50%;
- width: 950px;
- height: 500px;
- margin-top: -300px;
- margin-left: -475px;
+ left: 18%;
+ top: 3%;
+ width: 70%;
+ height: 70%px;
+/* margin-top: -300px;
+ margin-left: -475px;*/
 }
 
 /*
