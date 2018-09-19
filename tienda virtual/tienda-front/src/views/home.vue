@@ -27,7 +27,7 @@
       </div>
     </nav>
     <div>
-      <h1>Usuario sin registrar3</h1>
+      <h1>Usuario sin registrar</h1>
     </div>
    <div>
       <producto :producto="producto" v-for="producto in productos" :key="producto._id"/>
