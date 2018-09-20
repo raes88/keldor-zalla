@@ -25,9 +25,12 @@ export default {
 }
 
 </script>
+<<<<<<< HEAD
 <style scoped>
 .img {
   width: 10%;
 }
 
 </style>
+=======
+>>>>>>> e1358efd3a5b9ae4dfc5d620bec44b2fed26818e
