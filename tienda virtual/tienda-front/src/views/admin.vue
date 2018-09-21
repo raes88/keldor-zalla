@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+  <div class="container" id="home">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,8 +7,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <button class="btn btn-outline-success my-2 my-sm-0 botn" type="button"  v-on:click="obtenerProductos()">Productos</button>
-          <button class="btn btn-outline-success my-2 my-sm-0 botn" type="button"  v-on:click="obtenerUsuarios()">Usuarios</button>
+          <button class="btn btn-outline-success my-2 my-sm-0 botn" type="button" v-on:click="manteProductos()">Productos</button>
+          <button class="btn btn-outline-success my-2 my-sm-0 botn" type="button" v-on:click="manteUsuarios()">Usuarios</button>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
@@ -24,11 +24,13 @@
         </form>
       </div>
     </nav>
-    <div v-if="ocultar">
-      <producto :producto="producto" v-for="producto in productos" :key="producto._id" />
-    </div>
-     <div>
-      <producto :producto="producto" v-for="producto in productos" :key="producto._id" />
+    <div class="row justify-content-md-center row border border-dark " id="respuesta">
+      <div class="col-5 proUsu border border-dark resp">
+        <producto :producto="producto" v-for="producto in productos" :key="producto._id" />
+      </div>
+      <div class="col-5 proUsu border border-dark resp">
+        <usuario :usuario="usuario" v-for="usuario in usuarios" :key="usuario._id" />
+      </div>
     </div>
   </div>
 </template>
@@ -39,14 +41,15 @@ import usuario from './../components/usuario.vue'
 
 export default {
   name: 'Admin',
-  components: { producto ,usuario } ,
+  components: { producto, usuario },
   mounted () {
-    // this.obtenerProductos()
+    this.obtenerProductos()
+    this.obtenerUsuarios()
   },
   data () {
     return {
       productos: [],
-      usuarios: [],
+      usuarios: []
     }
   },
   methods: {
@@ -66,35 +69,46 @@ export default {
     obtenerUsuarios () {
       axios.get('http://localhost:4040/api/users/')
         .then((respuesta) => {
-          this.productos = respuesta.data
+          this.usuarios = respuesta.data
+          console.log(respuesta)
         })
         .catch(e => {
           // alert('Rellena todos los campos')
           console.log(e)
         })
+    },
+    manteProductos () {
+      this.$router.push({ name: 'manteproducto' })
+    },
+    manteUsuarios () {
+      this.$router.push({ name: 'mantecliente' })
     }
   }
 }
-
 </script>
 <style scoped>
 .botnLogin {
   margin-left: 6px;
 }
-.botn{
+
+.botn {
   margin-right: 8px;
 }
 
 h5 {
   margin-right: 15px;
 }
-
-input.enlace {
-  border: 0;
-  background-color: #fff;
-  text-decoration: underline;
-  color: #000;
-  cursor: pointer;
+.proUsu{
+  padding: 3%;
+  margin: 3%;
+}
+#respuesta{
+  margin-top: 2%;
+  margin-right: 2%;
+  background: #E7EEE4;
+}
+.resp{
+  background: #DDEAD7
 }
 
 </style>

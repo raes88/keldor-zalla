@@ -9,7 +9,7 @@
           numero: {{usuario.direccion.numero}},
           provincia: {{usuario.direccion.provincia}},
           localidad: {{usuario.direccion.localidad}}</h5>
-    <h5> Role : {{usuario.Role}}</h5>
+    <h5> Role : {{usuario.role}}</h5>
     <hr>
   </div>
 </template>
