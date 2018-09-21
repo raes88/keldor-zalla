@@ -93,6 +93,7 @@ function update(req, res, next) {
  * @returns {Productos[]}
  */
 function list(req, res, next) {
+  console.log(req.query)
   const { limit = 50, skip = 0 } = req.query;
   Productos.list({ limit, skip })
     .then(productos => res.json(productos))

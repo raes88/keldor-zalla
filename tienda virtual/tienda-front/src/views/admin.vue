@@ -57,7 +57,7 @@ export default {
       this.$router.push({ name: 'home' })
     },
     obtenerProductos () {
-      axios.get('http://localhost:4040/api/producto/')
+      axios.get('http://localhost:4040/api/producto?limit=3')
         .then((respuesta) => {
           this.productos = respuesta.data
         })
@@ -67,7 +67,7 @@ export default {
         })
     },
     obtenerUsuarios () {
-      axios.get('http://localhost:4040/api/users/')
+      axios.get('http://localhost:4040/api/users?limit=2')
         .then((respuesta) => {
           this.usuarios = respuesta.data
           console.log(respuesta)
@@ -105,10 +105,10 @@ h5 {
 #respuesta{
   margin-top: 2%;
   margin-right: 2%;
-  background: #E7EEE4;
+  background: #E4E4E4;
 }
 .resp{
-  background: #DDEAD7
+  background: #F2F2F2;
 }
 
 </style>
