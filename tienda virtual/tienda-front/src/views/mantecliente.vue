@@ -6,8 +6,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <button class="btn btn-outline-success my-2 my-sm-0 botn" type="button" v-on:click="manteProductos()">Productos</button>
-          <button class="btn btn-outline-success my-2 my-sm-0 botn" type="button" v-on:click="manteUsuarios()">Usuarios</button>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
@@ -19,15 +17,14 @@
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          <button type="button" class="btn btn-outline-success my-2 my-sm-0 botnLogin" v-on:click="salir()">Login out</button>
+          <button type="button" class="btn btn-outline-success my-2 my-sm-0 botnLogin" v-on:click="volver()">Volver</button>
         </form>
       </div>
     </nav>
     <h2>Manteniminto De Usuarios</h2>
-    <div class="col-5 proUsu border border-dark resp">
+    <div class="proUsu border border-dark resp">
       <usuario :usuario="usuario" v-for="usuario in usuarios" :key="usuario._id" />
     </div>
-    <button type="button" class="btn btn-outline-success my-2 my-sm-0" id=" botnVolver" v-on:click="volver()">Volver</button>
   </div>
 </template>
 <script>
@@ -49,7 +46,7 @@ export default {
       this.$router.push({ name: 'admin' })
     },
     obtenerUsuarios () {
-      axios.get('http://localhost:4040/api/users?limit=2')
+      axios.get('http://localhost:4040/api/users/')
         .then((respuesta) => {
           this.usuarios = respuesta.data
           console.log(respuesta)
