@@ -14,7 +14,7 @@
           </li>
         </ul>
         <h5 class="nav-item" align="right">Hola {{$store.state.username}}</h5>
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0" >
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           <button type="button" class="btn btn-outline-success my-2 my-sm-0 botnLogin" v-on:click="volver()">Volver</button>
@@ -22,8 +22,8 @@
       </div>
     </nav>
     <h2>Manteniminto De Usuarios</h2>
-    <div class="proUsu border border-dark resp">
-      <usuario :usuario="usuario" v-for="usuario in usuarios" :key="usuario._id" />
+    <div class="proUsu border border-dark resp row justify-content-center" >
+      <usuario :mostrar="true" :usuario="usuario" v-for="usuario in usuarios" :key="usuario._id" class="col-6" />
     </div>
   </div>
 </template>
@@ -55,6 +55,12 @@ export default {
           // alert('Rellena todos los campos')
           console.log(e)
         })
+    },
+    borrarUsuario () {
+      console.log('borrar usuario')
+    },
+    modificarUsuario () {
+
     }
   }
 }
@@ -83,6 +89,9 @@ h5 {
 }
 .resp{
   background: #F2F2F2;
+}
+#contClientes{
+  width: 40%;
 }
 
 </style>

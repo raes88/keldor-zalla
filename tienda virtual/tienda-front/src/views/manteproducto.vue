@@ -48,7 +48,7 @@ export default {
     obtenerProductos () {
       axios.get('http://localhost:4040/api/producto/')
         .then((respuesta) => {
-          this.usuarios = respuesta.data
+          this.productos = respuesta.data
           console.log(respuesta)
         })
         .catch(e => {
