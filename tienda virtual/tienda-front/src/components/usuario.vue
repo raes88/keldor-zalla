@@ -20,26 +20,31 @@ import axios from './../plugins/axios'
 export default {
   name: 'usuario',
   props: ['usuario', 'mostrar'],
-  created () {
-    console.log(this.usuario)
-  },
+  created () {},
   methods: {
     borrarUsuario () {
-      axios.delete('http://localhost:4040/api/users/')
+      console.log(this.usuario, 'usuario.vue')
+      axios.delete('http://localhost:4040/api/users/' + this.usuario._id)
         .then((respuesta) => {
-          this.usuarios = respuesta.data
-          console.log(respuesta)
+          if (respuesta.status === 200) {
+            this.$router.push({ name: 'mantecliente' })
+          } else {
+            console.log('Usuario no borrardo')
+          }
         })
         .catch(e => {
           // alert('Rellena todos los campos')
           console.log(e)
         })
+    },
+    modificarUsuario () {
+      console.log(this.usuario + ' usuario a modificar')
+      this.$router.push({ name: 'modificarusuario', params: { usuario: this.usuario } })
     }
   }
 }
 
 </script>
 <style scoped>
-
 
 </style>

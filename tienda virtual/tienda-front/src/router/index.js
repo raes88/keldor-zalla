@@ -7,6 +7,9 @@ import admin from '../views/admin'
 import cliente from '../views/cliente'
 import mantecliente from '../views/mantecliente.vue'
 import manteproducto from '../views/manteproducto.vue'
+import registroadmin from '../views/registroadmin.vue'
+import modifcliente from '../views/modifcliente.vue'
+import modificarusuario from '../views/modificarusuario.vue'
 
 Vue.use(Router)
 
@@ -67,9 +70,40 @@ export default new Router({
     }
   },
   {
+    path: '/modificarusuario',
+    name: 'modificarusuario',
+    component: modificarusuario,
+    meta: {
+      requiresAuth: true,
+      adminAuth: true,
+      clientAuth: false
+    }
+  },
+  {
     path: '/mantecliente',
     name: 'mantecliente',
     component: mantecliente,
+    meta: {
+      requiresAuth: true,
+      adminAuth: true,
+      clientAuth: false
+    }
+  },
+  {
+    path: '/registroadmin',
+    name: 'registroadmin',
+    component: registroadmin,
+    meta: {
+      requiresAuth: true,
+      adminAuth: true,
+      clientAuth: false
+    }
+  },
+  {
+    path: '/modifcliente',
+    name: 'modifcliente',
+    component: modifcliente,
+    props: true,
     meta: {
       requiresAuth: true,
       adminAuth: true,
