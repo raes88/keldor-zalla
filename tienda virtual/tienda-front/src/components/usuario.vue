@@ -20,7 +20,6 @@ import axios from './../plugins/axios'
 export default {
   name: 'usuario',
   props: ['usuario', 'mostrar'],
-  created () {},
   methods: {
     borrarUsuario () {
       console.log(this.usuario, 'usuario.vue')

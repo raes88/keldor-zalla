@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" id="app">
     <div class="row h-100 justify-content-center align-items-center">
       <form class="col-12">
         <div class="d-flex justify-content-center">
@@ -10,7 +10,7 @@
                 <div class="form-group">
                   <div class="d-flex justify-content-around">
                     <label for="formGroupExampleInput">Nombre:</label>
-                    <input type="text" class="form-control nombre" name="username" v-model="input.username" placeholder="Nombre" required />
+                    <input type="text" class="form-control nombre" :name="username" v-model="input.username" required />
                     <label for="formGroupExampleInput">Password:</label>
                     <input id="password" class="form-control pass" type="password" name="password" v-model="input.password" placeholder="Password" required />
                   </div>
@@ -53,7 +53,7 @@
                 </div>
               </fieldset>
               <div id="botones" class="d-flex justify-content-center">
-                <button type="button" class="btn btn-outline-success my-2 my-sm-0" v-on:click="altaUsuario()">Modificar Usuario</button>
+                <button type="button" class="btn btn-outline-success my-2 my-sm-0" v-on:click="modifUsuario()">Modificar Usuario</button>
                 <button type="button" class="btn btn-outline-success my-2 my-sm-0" v-on:click="salir()">Salir</button>
 
               </div>
@@ -72,7 +72,7 @@ export default {
   data () {
     return {
       input: {
-        username: usuario.username,
+        username: usuario.uername,
         password: '',
         mobileNumber: '',
         email: '',
@@ -84,13 +84,12 @@ export default {
           provincia: '',
           localidad: ''
         }
-
       }
     }
   },
   methods: {
-    altaUsuario () {
-      axios.put('http://localhost:4040/api/users ', this.input)
+    modifUsuario () {
+      axios.push('http://localhost:4040/api/users ', this.input)
         .then((respuesta) => {
           console.log(respuesta)
           if (respuesta.status === 200) {
@@ -105,7 +104,7 @@ export default {
         })
     },
     salir () {
-      this.$router.push({ name: 'login' })
+      this.$router.push({ name: 'mantecliente' })
     }
   }
 }

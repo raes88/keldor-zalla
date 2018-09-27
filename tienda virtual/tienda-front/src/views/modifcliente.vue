@@ -69,10 +69,11 @@
 import axios from './../plugins/axios'
 export default {
   name: 'registro',
+  props: ['usuario'],
   data () {
     return {
       input: {
-        username: '',
+        username: usuario.username,
         password: '',
         mobileNumber: '',
         email: '',
