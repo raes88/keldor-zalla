@@ -53,7 +53,8 @@
                 </div>
               </fieldset>
               <div id="botones" class="d-flex justify-content-center">
-                <button type="button" class="btn btn-outline-success my-2 my-sm-0" v-on:click="altaUsuario()">Modificar Usuario</button>
+                <button type="button" class="btn btn-outline-success my-2 my-sm-0" v-on:click="altaUsuario()">Alta De Usuario</button>
+                <button type="reset" class="btn btn-outline-success my-2 my-sm-0">Resetear Formulario</button>
                 <button type="button" class="btn btn-outline-success my-2 my-sm-0" v-on:click="salir()">Salir</button>
 
               </div>
@@ -67,12 +68,11 @@
 <script>
 import axios from './../plugins/axios'
 export default {
-  name: 'modificarUsuario',
-  props: ['usuario'],
+  name: 'registro',
   data () {
     return {
       input: {
-        username: usuario.username,
+        username: '',
         password: '',
         mobileNumber: '',
         email: '',
@@ -90,11 +90,11 @@ export default {
   },
   methods: {
     altaUsuario () {
-      axios.put('http://localhost:4040/api/users ', this.input)
+      axios.post('http://localhost:4040/api/users ', this.input)
         .then((respuesta) => {
           console.log(respuesta)
           if (respuesta.status === 200) {
-            // this.$store.dispatch('login', this.input)
+            this.$store.dispatch('login', this.input)
           } else {
             console.log('error')
           }
@@ -105,7 +105,7 @@ export default {
         })
     },
     salir () {
-      this.$router.push({ name: 'login' })
+      this.$router.push({ name: 'mantecliente' })
     }
   }
 }

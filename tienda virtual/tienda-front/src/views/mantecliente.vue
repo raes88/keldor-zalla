@@ -1,10 +1,12 @@
 <template>
-  <div> <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <button type="button" class="btn btn-outline-success my-2 my-sm-0" v-on:click="altaUsuario()">Nuevo Usuario</button>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -14,7 +16,7 @@
           </li>
         </ul>
         <h5 class="nav-item" align="right">Hola {{$store.state.username}}</h5>
-        <form class="form-inline my-2 my-lg-0" >
+        <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           <button type="button" class="btn btn-outline-success my-2 my-sm-0 botnLogin" v-on:click="volver()">Volver</button>
@@ -22,7 +24,7 @@
       </div>
     </nav>
     <h2>Manteniminto De Usuarios</h2>
-    <div class="proUsu border border-dark resp row justify-content-center" >
+    <div class="proUsu border border-dark resp row justify-content-center">
       <usuario :mostrar="true" :usuario="usuario" v-for="usuario in usuarios" :key="usuario._id" class="col-6" />
     </div>
   </div>
@@ -32,6 +34,7 @@ import axios from './../plugins/axios'
 import usuario from './../components/usuario.vue'
 export default {
   name: 'MantenimintoUsuarios',
+  props: ['usuario'],
   components: { usuario },
   mounted () {
     this.obtenerUsuarios()
@@ -56,12 +59,10 @@ export default {
           console.log(e)
         })
     },
-    borrarUsuario () {
-      console.log('borrar usuario')
-    },
-    modificarUsuario () {
-
+    altaUsuario () {
+      this.$router.push({ name: 'registro' })
     }
+
   }
 }
 
@@ -78,19 +79,23 @@ export default {
 h5 {
   margin-right: 15px;
 }
-.proUsu{
+
+.proUsu {
   padding: 3%;
   margin: 3%;
 }
-#respuesta{
+
+#respuesta {
   margin-top: 2%;
   margin-right: 2%;
   background: #E4E4E4;
 }
-.resp{
+
+.resp {
   background: #F2F2F2;
 }
-#contClientes{
+
+#contClientes {
   width: 40%;
 }
 
