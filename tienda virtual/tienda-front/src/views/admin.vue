@@ -70,7 +70,7 @@ export default {
       axios.get('http://localhost:4040/api/users?limit=2')
         .then((respuesta) => {
           this.usuarios = respuesta.data
-          console.log(respuesta)
+          // console.log(respuesta)
         })
         .catch(e => {
           // alert('Rellena todos los campos')

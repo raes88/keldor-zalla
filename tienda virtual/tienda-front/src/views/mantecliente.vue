@@ -25,7 +25,7 @@
     </nav>
     <h2>Manteniminto De Usuarios</h2>
     <div class="proUsu border border-dark resp row justify-content-center">
-      <usuario :mostrar="true" :usuario="usuario" v-for="usuario in usuarios" :key="usuario._id" class="col-6" />
+      <usuario @usuarioBorrado="obtenerUsuarios" :mostrar="true" :usuario="usuario" v-for="usuario in usuarios" :key="usuario._id" class="col-6" />
     </div>
   </div>
 </template>
@@ -52,7 +52,6 @@ export default {
       axios.get('http://localhost:4040/api/users/')
         .then((respuesta) => {
           this.usuarios = respuesta.data
-          console.log(respuesta)
         })
         .catch(e => {
           // alert('Rellena todos los campos')
@@ -60,7 +59,7 @@ export default {
         })
     },
     altaUsuario () {
-      this.$router.push({ name: 'registro' })
+      this.$router.push({ name: 'registroadmin' })
     }
 
   }

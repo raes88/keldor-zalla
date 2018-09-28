@@ -4,15 +4,15 @@
       <form class="col-12">
         <div class="d-flex justify-content-center">
           <div class="shadow p-3 mb-5 bg-light rounded" id="registro">
-            <h1 class="d-flex justify-content-center"><p class="font-weight-bold">Registro</p></h1>
+            <h1 class="d-flex justify-content-center"><p class="font-weight-bold">Modificar Usuario</p></h1>
             <div id="campos">
               <fieldset class="shadow p-3 mb-5 bg-light rounded">
                 <div class="form-group">
                   <div class="d-flex justify-content-around">
                     <label for="formGroupExampleInput">Nombre:</label>
-                    <input type="text" class="form-control nombre" :name="username" v-model="input.username" required />
+                    <input type="text" class="form-control nombre" name="username" v-model="input.username" required />
                     <label for="formGroupExampleInput">Password:</label>
-                    <input id="password" class="form-control pass" type="password" name="password" v-model="input.password" placeholder="Password" required />
+                    <input id="password" class="form-control pass" type="text" name="password" v-model="input.password" placeholder="Password" required />
                   </div>
                 </div>
               </fieldset>
@@ -72,34 +72,37 @@ export default {
   data () {
     return {
       input: {
-        username: usuario.uername,
-        password: '',
-        mobileNumber: '',
-        email: '',
-        role: '',
+        username: this.usuario.username,
+        password: this.usuario.password,
+        mobileNumber: this.usuario.mobileNumber,
+        email: this.usuario.email,
+        role: this.usuario.role,
         direccion: {
-          calle: '',
-          cp: '',
-          numero: '',
-          provincia: '',
-          localidad: ''
+          calle: this.usuario.direccion.calle,
+          cp: this.usuario.direccion.cp,
+          numero: this.usuario.direccion.numero,
+          provincia: this.usuario.direccion.provincia,
+          localidad: this.usuario.direccion.localidad
         }
       }
     }
   },
   methods: {
     modifUsuario () {
-      axios.push('http://localhost:4040/api/users ', this.input)
+      console.log(this.usuario._id)
+      console.log('usuario a modificar-- ', this.input)
+      axios.put('http://localhost:4040/api/users/' + this.usuario._id, this.input)
         .then((respuesta) => {
-          console.log(respuesta)
+          // console.log(respuesta)
           if (respuesta.status === 200) {
-            // this.$store.dispatch('login', this.input)
+            this.$router.push({ name: 'mantecliente' })
           } else {
             console.log('error')
           }
-        })
+        }
+        )
         .catch(e => {
-          alert('Rellena todos los campos')
+          // alert('Rellena todos los campos')
           console.log(e)
         })
     },
@@ -157,81 +160,6 @@ form {
  top: 3%;
  width: 70%;
  height: 70%px;
-/* margin-top: -300px;
- margin-left: -475px;*/
 }
-
-/*
-#registro {
-  align-content: center;
-#FFFFFF  border: 1px solid #212221;
-  background-color: #433A3A;
-  margin: auto;
-  margin-top: 80px;
-  padding: 20px;
-  margin-right: 240spx;
-}
-
-#campos {
-  display: inline;
-  width: 680px;
-  margin-top: 10px;
-}
-
-#titulos {
-  margin-top: 4px;
-  margin-bottom: 2px;
-  text-align: left;
-  padding-left: 12px;
-}
-
-#botones {
-  margin-top: 10px;
-  text-align: center;
-}
-
-input {
-  width: 500px;
-  margin-bottom: 8px;
-  margin-top: 8px;
-}
-
-select {
-  width: 480px;
-}
-
-#direcNum {
-  width: 50px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-}
-
-#calle {
-  width: 300px;
-  margin-top: 8px;
-}
-
-#direcText {
-  width: 122px;
-  margin-top: 8px;
-}
-
-#direccion {
-  align-content: center;
-}
-
-#role {
-  width: 100px;
-}
-
-#texto {
-  width: 450px;
-}
-
-fieldset {
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}*/
 
 </style>

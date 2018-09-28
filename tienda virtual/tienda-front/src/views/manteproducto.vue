@@ -49,7 +49,7 @@ export default {
       axios.get('http://localhost:4040/api/producto/')
         .then((respuesta) => {
           this.productos = respuesta.data
-          console.log(respuesta)
+          // console.log(respuesta)
         })
         .catch(e => {
           // alert('Rellena todos los campos')

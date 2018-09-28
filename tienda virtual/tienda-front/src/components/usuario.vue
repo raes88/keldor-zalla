@@ -4,11 +4,7 @@
     <h5> Telefono : {{usuario.mobileNumber}} </h5>
     <h5> Categoria : {{usuario.email}} </h5>
     <h5> Direccion : </h5>
-    <h7> Calle: {{usuario.direccion.calle}} -</h7>
-    <h7> Numero: {{usuario.direccion.numero}} -</h7>
-    <h7> Provincia: {{usuario.direccion.provincia}}
-      <br>
-    </h7>
+    <h5> Calle: {{usuario.direccion.calle}} - Numero: {{usuario.direccion.numero}} - Provincia: {{usuario.direccion.provincia}} </h5>
     <h5> Role :  {{usuario.role}} </h5>
     <button v-if="mostrar" type="button" class="btn btn-outline-success my-2 my-sm-0 botnModif" v-on:click="borrarUsuario()">Borrar</button>
     <button v-if="mostrar" type="button" class="btn btn-outline-success my-2 my-sm-0 botnModif" v-on:click="modificarUsuario()">Modificar</button>
@@ -22,13 +18,13 @@ export default {
   props: ['usuario', 'mostrar'],
   methods: {
     borrarUsuario () {
-      console.log(this.usuario, 'usuario.vue')
+      // console.log(this.usuario, 'usuario.vue')
       axios.delete('http://localhost:4040/api/users/' + this.usuario._id)
         .then((respuesta) => {
           if (respuesta.status === 200) {
-            this.$router.push({ name: 'mantecliente' })
+            this.$emit('usuarioBorrado')
           } else {
-            console.log('Usuario no borrardo')
+            // console.log('Usuario no borrardo')
           }
         })
         .catch(e => {
@@ -37,7 +33,7 @@ export default {
         })
     },
     modificarUsuario () {
-      console.log(this.usuario + ' usuario a modificar')
+      // console.log(this.usuario + ' usuario a modificar')
       this.$router.push({ name: 'modificarusuario', params: { usuario: this.usuario } })
     }
   }

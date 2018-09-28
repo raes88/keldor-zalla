@@ -20,7 +20,7 @@ export default {
     }
   },
   created () {
-    console.log(this.producto)
+    // console.log(this.producto)
   }
 }
 

@@ -92,9 +92,9 @@ export default {
     altaUsuario () {
       axios.post('http://localhost:4040/api/users ', this.input)
         .then((respuesta) => {
-          console.log(respuesta)
+          // console.log(respuesta)
           if (respuesta.status === 200) {
-            this.$store.dispatch('login', this.input)
+            this.$router.push({ name: 'mantecliente' })
           } else {
             console.log('error')
           }
