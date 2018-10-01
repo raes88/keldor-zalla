@@ -1,10 +1,12 @@
 <template>
-  <div> <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <button type="button" class="btn btn-outline-success my-2 my-sm-0" v-on:click="altaUsuario()">Nuevo Producto</button>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -22,8 +24,9 @@
       </div>
     </nav>
     <h2>Manteniminto De Producto</h2>
-    <div class="proUsu border border-dark resp">
-       <producto :producto="producto" v-for="producto in productos" :key="producto._id" />
+    <div class="border border-dark resp  row justify-content-center">
+      <!-- <producto class="proUsu border border-dark resp  row justify-content-center" @productoBorrado="obtenerProductos" :mostrar="true" :producto="producto" v-for="producto in productos" :key="producto._id" /> -->
+      <producto class="proUsu Admin/" @productoBorrado="obtenerProductos" :mostrar="true" :producto="producto" v-for="producto in productos" :key="producto._id" />
     </div>
   </div>
 </template>
@@ -72,17 +75,24 @@ export default {
 h5 {
   margin-right: 15px;
 }
-.proUsu{
+
+.proUsu {
   padding: 3%;
-  margin: 3%;
+  margin: 2%;
+  height: 30%;
 }
-#respuesta{
+
+#respuesta {
   margin-top: 2%;
   margin-right: 2%;
   background: #E4E4E4;
 }
-.resp{
+
+.resp {
   background: #F2F2F2;
+}
+#contProductos {
+  width: 40%;
 }
 
 </style>

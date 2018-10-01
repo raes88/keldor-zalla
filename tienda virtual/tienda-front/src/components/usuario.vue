@@ -19,18 +19,21 @@ export default {
   methods: {
     borrarUsuario () {
       // console.log(this.usuario, 'usuario.vue')
-      axios.delete('http://localhost:4040/api/users/' + this.usuario._id)
-        .then((respuesta) => {
-          if (respuesta.status === 200) {
-            this.$emit('usuarioBorrado')
-          } else {
-            // console.log('Usuario no borrardo')
-          }
-        })
-        .catch(e => {
-          // alert('Rellena todos los campos')
-          console.log(e)
-        })
+      let opcion = confirm('SEGURO !!!!')
+      if (opcion === true) {
+        axios.delete('http://localhost:4040/api/users/' + this.usuario._id)
+          .then((respuesta) => {
+            if (respuesta.status === 200) {
+              this.$emit('usuarioBorrado')
+            } else {
+              // console.log('Usuario no borrardo')
+            }
+          })
+          .catch(e => {
+            // alert('Rellena todos los campos')
+            console.log(e)
+          })
+      }
     },
     modificarUsuario () {
       // console.log(this.usuario + ' usuario a modificar')
@@ -41,5 +44,4 @@ export default {
 
 </script>
 <style scoped>
-
 </style>
