@@ -6,7 +6,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <button type="button" class="btn btn-outline-success my-2 my-sm-0" v-on:click="altaUsuario()">Nuevo Producto</button>
+         <button type="button" class="btn btn-outline-success my-2 my-sm-0" v-on:click="altaProducto()">Nuevo Producto</button>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -58,6 +58,9 @@ export default {
           // alert('Rellena todos los campos')
           console.log(e)
         })
+    },
+    altaProducto () {
+      this.$router.push({ name: 'registroproducto' })
     }
   }
 }

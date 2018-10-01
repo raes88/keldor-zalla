@@ -10,7 +10,24 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 export default {
-  name: 'App'
+  name: 'App',
+  beforeCreate () {
+  	console.log('Hola mundo')
+  	let token = this.$cookie.get('token')
+  	console.log(token)
+  	if (token) {
+  		axios.defaults.headers.common['Authorization'] = 'Bearer ' + token 
+        axios.get('http://localhost:4040/api/auth/random-number')
+          .then((respuesta) => {
+            console.log(respuesta)
+          })
+          .catch(e => {
+            alert('Usuario o contraseña erroneo o no existe')
+            console.log(e)
+
+          })
+  	}
+  }
 }
 
 </script>

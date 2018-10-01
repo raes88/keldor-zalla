@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import VueCookie from 'vue-cookie'
+
+Vue.use(VueCookie)
 
 Vue.config.productionTip = false
 
@@ -16,9 +19,9 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
-  console.log(to)
+  /* console.log(to)
   console.log('hola')
-  console.log(store.state.auth)
+  console.log(store.state.auth) */
 })
 
 /* eslint-disable no-new */

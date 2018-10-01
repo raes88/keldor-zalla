@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-// import axios from './../plugins/axios'
+import axios from './../plugins/axios'
 export default {
   name: 'Login',
   data () {
@@ -24,21 +24,24 @@ export default {
   },
   methods: {
     login () {
+      console.log(this.$cookie)
       if (this.input.username !== '' && this.input.password !== '') {
-        this.$store.dispatch('login', this.input)
-        // axios.post('http://localhost:4040/api/auth/login ', this.input)
-        //   .then((respuesta) => {
-        //     console.log(respuesta)
-        //     if (respuesta.status === 200) {
-        //       this.$router.push({ name: 'home' })
-        //     } else {
-        //       console.log('The username and / or password is incorrect')
-        //     }
-        //   })
-        //   .catch(e => {
-        //     alert('Usuario o contraseña erroneo o no existe')
-        //     console.log(e)
-        //   })
+        // this.$store.dispatch('login', this.input)
+        axios.post('http://localhost:4040/api/auth/login', this.input)
+          .then((respuesta) => {
+            this.$cookie.set('token', respuesta.data.token, 1)
+            this.$store.dispatch('login', respuesta)
+            if (respuesta.data.role === 'ADMIN') {
+              router.push({ name: 'admin' })
+            } else {
+              router.push({ name: 'cliente' })
+            }
+          })
+          .catch(e => {
+            alert('Usuario o contraseña erroneo o no existe')
+            console.log(e)
+
+          })
       } else {
         alert('Usuario o contraseña vacio')
       }

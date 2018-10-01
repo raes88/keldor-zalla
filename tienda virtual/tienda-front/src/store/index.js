@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from './../plugins/axios'
+// import axios from './../plugins/axios'
 import router from './../router'
 
 Vue.use(Vuex)
 
 const state = {
+  token: '',
   username: '',
   role: '',
   email: '',
@@ -13,29 +14,16 @@ const state = {
 }
 
 const actions = {
-  login ({ commit, state }, user, role) {
-    axios.post('http://localhost:4040/api/auth/login', user, role)
-      .then((respuesta) => {
-        console.log(respuesta)
-        commit('setUsername', respuesta.data.username)
-        commit('setRole', respuesta.data.role)
-        commit('setEmail', respuesta.data.email)
-        commit('setAuth', true)
-        if (respuesta.status === 200) {
-          if (respuesta.data.role === 'ADMIN') {
-            router.push({ name: 'admin' })
-          } else {
-            router.push({ name: 'cliente' })
-          }
-        } else {
-          commit('setAuth', false)
-          console.log('The username and / or password is incorrect')
-        }
-      })
-      .catch(e => {
-        alert('Usuario o contraseña erroneo o no existe')
-        console.log(e)
-      })
+  login ({ commit, state }, respuesta) {
+    if (respuesta.status === 200) {
+      commit('setUsername', respuesta.data.username)
+      commit('setRole', respuesta.data.role)
+      commit('setEmail', respuesta.data.email)
+      commit('setAuth', true)
+    } else {
+      commit('setAuth', false)
+      console.log('The username and / or password is incorrect')
+    }
   }
 }
 
@@ -53,6 +41,7 @@ const mutations = {
     state.email = email
   },
   setAuth (state, bool) {
+    console.log('bool ' + bool)
     state.auth = bool
   }
 }

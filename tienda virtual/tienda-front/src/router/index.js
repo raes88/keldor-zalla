@@ -9,6 +9,7 @@ import mantecliente from '../views/mantecliente.vue'
 import manteproducto from '../views/manteproducto.vue'
 import registroadmin from '../views/registroadmin.vue'
 import modificarusuario from '../views/modificarusuario.vue'
+import registroproducto from '../views/registroproducto.vue'
 
 Vue.use(Router)
 
@@ -93,6 +94,16 @@ export default new Router({
     path: '/registroadmin',
     name: 'registroadmin',
     component: registroadmin,
+    meta: {
+      requiresAuth: true,
+      adminAuth: true,
+      clientAuth: false
+    }
+  },
+  {
+    path: '/registroproducto',
+    name: 'registroproducto',
+    component: registroproducto,
     meta: {
       requiresAuth: true,
       adminAuth: true,
