@@ -12,6 +12,7 @@
 </template>
 <script>
 import axios from './../plugins/axios'
+import router from './../router/index'
 export default {
   name: 'Login',
   data () {
@@ -40,7 +41,6 @@ export default {
           .catch(e => {
             alert('Usuario o contraseña erroneo o no existe')
             console.log(e)
-
           })
       } else {
         alert('Usuario o contraseña vacio')

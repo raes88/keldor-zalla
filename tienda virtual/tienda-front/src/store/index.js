@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 // import axios from './../plugins/axios'
-import router from './../router'
+// import router from './../router'
 
 Vue.use(Vuex)
 
 const state = {
-  token: '',
   username: '',
   role: '',
   email: '',

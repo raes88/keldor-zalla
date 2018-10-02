@@ -7,6 +7,10 @@
     <h5> Precio : {{producto.producPrecio}}</h5>
     <button v-if="mostrar" type="button" class="btn btn-outline-success my-2 my-sm-0 botnModif" v-on:click="borrarProducto()">Borrar</button>
     <button v-if="mostrar" type="button" class="btn btn-outline-success my-2 my-sm-0 botnModif" v-on:click="modificarProducto()">Modificar</button>
+    <div id="botones">
+    <button v-if="carro" type="button" class="btn btn-outline-success my-2 my-sm-0 botnModif" v-on:click="sumarProducto()">+</button>
+    <button v-if="carro" type="button" class="btn btn-outline-success my-2 my-sm-0 botnModif" v-on:click="restarProducto()">-</button>
+    </div>
     <hr>
   </div>
 </template>
@@ -14,7 +18,7 @@
 import axios from './../plugins/axios'
 export default {
   name: 'producto',
-  props: ['producto', 'mostrar'],
+  props: ['producto', 'mostrar', 'carro'],
   methods: {
     borrarProducto () {
       // confirm('mensaje')
@@ -56,6 +60,9 @@ export default {
 <style scoped>
 .img {
   width: 10%;
+}
+#botones{
+  text-align: right;
 }
 
 </style>

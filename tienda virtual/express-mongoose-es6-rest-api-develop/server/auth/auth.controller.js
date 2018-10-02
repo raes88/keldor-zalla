@@ -26,7 +26,9 @@ function login(req, res, next) {
       // Comprobar que las password coincidan
       if (req.body.password === usuario.password) {
         const token = jwt.sign({
-          username: usuario.username
+          username: usuario.username,
+          role: usuario.role,
+          email: usuario.email
         }, config.jwtSecret);
         return res.json({
           token,
@@ -56,4 +58,9 @@ function getRandomNumber(req, res) {
   });
 }
 
-module.exports = { login, getRandomNumber };
+function getTokenData(req, res) {
+  // req.user is assigned by jwt middleware if valid token is provided
+  return res.json(req.user);
+}
+
+module.exports = { login, getRandomNumber, getTokenData };
