@@ -8,8 +8,7 @@
     <button v-if="mostrar" type="button" class="btn btn-outline-success my-2 my-sm-0 botnModif" v-on:click="borrarProducto()">Borrar</button>
     <button v-if="mostrar" type="button" class="btn btn-outline-success my-2 my-sm-0 botnModif" v-on:click="modificarProducto()">Modificar</button>
     <div id="botones">
-    <button v-if="carro" type="button" class="btn btn-outline-success my-2 my-sm-0 botnModif" v-on:click="sumarProducto()">+</button>
-    <button v-if="carro" type="button" class="btn btn-outline-success my-2 my-sm-0 botnModif" v-on:click="restarProducto()">-</button>
+    <button  v-if="carro" type="button" class="btn btn-outline-success my-2 my-sm-0 botnModif carro" v-on:click="sumarProducto()"><img src="carro.jpg"></button>
     </div>
     <hr>
   </div>
@@ -63,6 +62,9 @@ export default {
 }
 #botones{
   text-align: right;
+}
+.carro{
+  background-image:url(carro.jpg);
 }
 
 </style>
