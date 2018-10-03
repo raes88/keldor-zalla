@@ -1,23 +1,27 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Home</a>
+      <a class="navbar-brand" href="#">Todo</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Raton</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <a class="nav-link" href="#">Fuente</a>
           </li>
-          <select class="form-control">
-            <option value="consumibles">Consumibles</option>
-            <option value="sobremesa">Sobremesa</option>
-            <option value="sobremesa">Portatil</option>
-          </select>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pantalla</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="#">Teclado</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link font-weight-bold"  id="carro" href="#">Carro - {{$store.state.username}}</a>
+          </li>
         </ul>
         <h5 class="nav-item" align="right">Hola {{$store.state.username}}</h5>
         <form class="form-inline my-2 my-lg-0">
@@ -84,6 +88,10 @@ h5 {
   background: #f8f9fa;
   margin-top: 3%;
   margin-bottom: 3%;
+}
+#carro{
+  margin-left: 25px;
+  color: #FD320A;
 }
 
 </style>

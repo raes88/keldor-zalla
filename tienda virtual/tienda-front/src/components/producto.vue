@@ -1,14 +1,14 @@
 <template>
   <div class="productos">
-    <img class="img" :src="'http://localhost:4040/' + producto.producImagen" align="right">
+    <img class="img float-right" :src="'http://localhost:4040/' + producto.producImagen" align="right">
     <h3> {{producto.producName}} </h3>
     <h5> Distribuidor : {{producto.distribuidor}} </h5>
     <h5> Descripcion : {{producto.producDescripcion}} </h5>
-    <h5> Precio : {{producto.producPrecio}}</h5>
+    <h5> Precio : {{producto.producPrecio}} - Stock: {{producto.stock}}</h5>
     <button v-if="mostrar" type="button" class="btn btn-outline-success my-2 my-sm-0 botnModif" v-on:click="borrarProducto()">Borrar</button>
     <button v-if="mostrar" type="button" class="btn btn-outline-success my-2 my-sm-0 botnModif" v-on:click="modificarProducto()">Modificar</button>
     <div id="botones">
-    <button  v-if="carro" type="button" class="btn btn-outline-success my-2 my-sm-0 botnModif carro" v-on:click="sumarProducto()"><img src="carro.jpg"></button>
+      <button  v-if="carro" type="button" class="btn btn-outline-success my-2 my-sm-0 botnModif btnCarro" v-on:click="anadirCarro()">+</button>
     </div>
     <hr>
   </div>
@@ -40,6 +40,9 @@ export default {
     modificarProducto () {
       // console.log(this.usuario + ' usuario a modificar')
       this.$router.push({ name: 'modificarusuario', params: { usuario: this.usuario } })
+    },
+    anadirCarro () {
+
     }
   }
   /* props: {
@@ -60,11 +63,10 @@ export default {
 .img {
   width: 10%;
 }
-#botones{
+
+#botones {
   text-align: right;
-}
-.carro{
-  background-image:url(carro.jpg);
+  margin-bottom: 2%;
 }
 
 </style>
