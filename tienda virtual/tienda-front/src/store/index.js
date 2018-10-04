@@ -59,21 +59,35 @@ const mutations = {
       stock: producto.stock,
       unidades: 0
     }
-    for (let i = 0; i < state.carro.length; i++) {
-      console.log('producto._id  ----  ' + producto._id)
-      console.log('state.carro[i]._id --- ' + state.carro[i]._id)
-      if (producto._id === state.carro[i]._id && state.carro.length > 0) {
-        state.carro[i].unidades += 1
-      } else {
-        console.log('creamos objeto carro')
-        state.carro.push(newProduct)
+    console.log(state.carro.length + '--- longitud')
+    // state.carro.push(newProduct)
+    if (state.carro.length === 0) {
+      console.log('primera vez añadimos')
+      state.carro.push(newProduct)
+      state.carro[0].unidades = 1
+    } else {
+      for (let i = 0; i < state.carro.length; i++) {
+        // console.log('state.carro[i]._id --- ' + state.carro[i]._id)
+        if (producto._id === state.carro[i]._id) {
+          console.log('el producto esta en el carro añadimo 1 a unidades')
+          state.carro[i].unidades += 1
+          return
+        } else {
+          console.log('el producto no esta en el carro lo añadimos')
+          state.carro.push(newProduct)
+          // state.carro[i].unidades += 1
+        }
       }
+      console.log('fin----------------------')
     }
   },
   eliminarProducto: (state, producto) => state.carro.splice(producto, 1)
 }
 const getters = {
   numProductos: (state) => state.carro.reduce((numero) => numero + 1, 0),
+  /* numProductos (state) {
+    return state.carro.length
+  }, */
   totalCompra: (state) => state.carro.reduce((total, producto) => total + producto.producPrecio, 0)
 }
 
