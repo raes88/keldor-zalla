@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h2>Carro de la compra</h2>
+        <h2>Carro de la compra  {{ numProductos }}</h2>
         <h3>Total compra: {{ totalCompra.toFixed(2) }} € </h3>
         <ul>
             <li v-for="(producto, indice) in carro" :key="indice.id">
@@ -15,7 +15,7 @@
     export default {
         computed: {
             ...mapState(['carro']),
-            ...mapGetters(['totalCompra']),
+            ...mapGetters(['totalCompra','numProductos']),
         },
         methods: mapMutations(['eliminarProducto'])
     }

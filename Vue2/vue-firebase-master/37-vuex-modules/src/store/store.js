@@ -13,6 +13,7 @@ export const store = new Vuex.Store({
         carro: [],
     },
     getters: {
+        numProductos: (state) => state.carro.reduce((numero) => numero + 1, 0),
         totalCompra: (state) => state.carro.reduce((total, producto) => total + producto.precio, 0),
     },
     mutations: {
