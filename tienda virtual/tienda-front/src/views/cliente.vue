@@ -16,11 +16,11 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Pantalla</a>
           </li>
-           <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="#">Teclado</a>
           </li>
-           <li class="nav-item">
-            <a class="nav-link font-weight-bold"  id="carro" href="#">Carro - {{$store.state.username}}</a>
+          <li class="nav-item">
+            <a class="nav-link font-weight-bold"  id="carro" href="#">Carro - {{ numProductos }}</a>
           </li>
         </ul>
         <h5 class="nav-item" align="right">Hola {{$store.state.username}}</h5>
@@ -39,9 +39,14 @@
 <script>
 import axios from './../plugins/axios'
 import producto from './../components/producto.vue'
+import {mapState, mapGetters} from 'vuex'
 export default {
   name: 'Cliente',
   components: { producto },
+  computed: {
+    ...mapState(['carro']),
+    ...mapGetters(['totalCompra', 'numProductos'])
+  },
   mounted () {
     this.obtenerProductos()
   },
@@ -89,7 +94,8 @@ h5 {
   margin-top: 3%;
   margin-bottom: 3%;
 }
-#carro{
+
+#carro {
   margin-left: 25px;
   color: #FD320A;
 }

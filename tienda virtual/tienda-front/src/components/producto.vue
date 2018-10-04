@@ -42,7 +42,8 @@ export default {
       this.$router.push({ name: 'modificarusuario', params: { usuario: this.usuario } })
     },
     anadirCarro () {
-
+      console.log(this.producto.producName + 'producto.vue')
+      this.$store.dispatch('anadirCarro', this.producto)
     }
   }
   /* props: {
