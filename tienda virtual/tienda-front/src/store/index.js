@@ -22,30 +22,30 @@ const actions = {
       commit('setAuth', true)
     } else {
       commit('setAuth', false)
-      console.log('The username and / or password is incorrect')
+      // console.log('The username and / or password is incorrect')
     }
   },
   anadirCarro ({ commit, state }, producto) {
-    console.log('--------' + producto.producName)
+    // console.log('--------' + producto.producName)
     commit('comprarProducto', producto)
   }
 }
 
 const mutations = {
   setUsername (state, username) {
-    console.log('hola ' + username)
+    // console.log('hola ' + username)
     state.username = username
   },
   setRole (state, role) {
-    console.log('role ' + role)
+    // console.log('role ' + role)
     state.role = role
   },
   setEmail (state, email) {
-    console.log('email ' + email)
+    // console.log('email ' + email)
     state.email = email
   },
   setAuth (state, bool) {
-    console.log('bool ' + bool)
+    // console.log('bool ' + bool)
     state.auth = bool
   },
   comprarProducto (state, producto) {
@@ -57,28 +57,35 @@ const mutations = {
       producPrecio: producto.producPrecio,
       producImagen: producto.producImagen,
       stock: producto.stock,
-      unidades: 0
+      unidades: 1
     }
-    console.log(state.carro.length + '--- longitud')
+    // console.log(state.carro.length + '--- longitud')
+    // let posicion = -1
     // state.carro.push(newProduct)
     if (state.carro.length === 0) {
-      console.log('primera vez añadimos')
+      // console.log('primera vez añadimos')
       state.carro.push(newProduct)
-      state.carro[0].unidades = 1
+      // state.carro[0].unidades = 1
     } else {
-      for (let i = 0; i < state.carro.length; i++) {
-        // console.log('state.carro[i]._id --- ' + state.carro[i]._id)
-        if (producto._id === state.carro[i]._id) {
-          console.log('el producto esta en el carro añadimo 1 a unidades')
-          state.carro[i].unidades += 1
-          return
-        } else {
-          console.log('el producto no esta en el carro lo añadimos')
-          state.carro.push(newProduct)
-          // state.carro[i].unidades += 1
-        }
+      // console.log(producto._id + ' ----producto._id')
+      const index = state.carro.findIndex(function (productoCarro) { return productoCarro._id === producto._id })
+      // console.log(index + ' ----index')
+      // for (let i = 0; i < state.carro.length; i++) {
+      //   if (producto._id === state.carro[i]._id) {
+      //     posicion = i
+      //     console.log('posicion --- ' + posicion + ',  i ----- ' + i)
+      //   }
+      // }
+      // console.log('state.carro[i]._id --- ' + state.carro[i]._id)
+      if (index === -1) {
+        // console.log('el producto no esta en el carro lo añadimos')
+        state.carro.push(newProduct)
+        // state.carro[posicion].unidades += 1
+      } else {
+        // console.log('el producto esta en el carro añadimo 1 a unidades')
+        state.carro[index].unidades += 1
       }
-      console.log('fin----------------------')
+      // console.log('fin----------------------')
     }
   },
   eliminarProducto: (state, producto) => state.carro.splice(producto, 1)

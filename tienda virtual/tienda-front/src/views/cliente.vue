@@ -20,7 +20,8 @@
             <a class="nav-link" href="#">Teclado</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link font-weight-bold"  id="carro" href="#">Carro - {{ numProductos }}</a>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="carro" v-on:click="goTo()">Carro - {{ numProductos }}</button>
+            <!-- <a class="nav-link font-weight-bold"  id="carro"  @click="goTo('carrito')">Carro - {{ numProductos }}</a> -->
           </li>
         </ul>
         <h5 class="nav-item" align="right">Hola {{$store.state.username}}</h5>
@@ -60,6 +61,9 @@ export default {
       document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC'
       this.$router.push({ name: 'home' })
     },
+    goTo (name) {
+      this.$router.push({ name: 'carrito' })
+    },
     obtenerProductos () {
       axios.get('http://localhost:4040/api/producto/')
         .then((respuesta) => {
@@ -97,7 +101,11 @@ h5 {
 
 #carro {
   margin-left: 25px;
-  color: #FD320A;
+  color: #FF0612;
+}
+
+#carro:hover {
+  color:#FFFFFF;
 }
 
 </style>

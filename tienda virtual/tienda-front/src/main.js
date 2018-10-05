@@ -11,13 +11,16 @@ Vue.use(VueCookie)
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
+  // console.log('hola1')
   if (to.meta.requiresAuth) {
     if (store.state.auth) {
-      next()
+      // console.log('hola2')
+      return next()
     } else {
     }
   } else {
-    next()
+    // console.log('hola3')
+    return next()
   }
   /* console.log(to)
   console.log('hola')

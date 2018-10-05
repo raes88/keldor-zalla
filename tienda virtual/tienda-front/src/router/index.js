@@ -10,6 +10,7 @@ import manteproducto from '../views/manteproducto.vue'
 import registroadmin from '../views/registroadmin.vue'
 import modificarusuario from '../views/modificarusuario.vue'
 import registroproducto from '../views/registroproducto.vue'
+import carrito from '../views/carro.vue'
 
 Vue.use(Router)
 
@@ -38,11 +39,6 @@ export default new Router({
     path: '/login',
     name: 'login',
     component: login
-  },
-  {
-    path: '/',
-    name: 'home',
-    component: home
   },
   {
     path: '/registro',
@@ -98,6 +94,16 @@ export default new Router({
       requiresAuth: true,
       adminAuth: true,
       clientAuth: false
+    }
+  },
+  {
+    path: '/carrito',
+    name: 'carrito',
+    component: carrito,
+    meta: {
+      requiresAuth: true,
+      adminAuth: false,
+      clientAuth: true
     }
   },
   {
