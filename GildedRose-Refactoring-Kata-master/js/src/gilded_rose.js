@@ -12,33 +12,13 @@ class Shop {
     }
     updateQuality() {
         for (var i = 0; i < this.items.length; i++) {
-            if (this.items[i].name = "Aged Brie") {
+            if (this.items[i].name == "Aged Brie") {
                 this.procesBrieItems(i)
-            } else  if (this.items[i].name = "Sulfuras"){
-                this.procesBrieItems(i)
-
-                if (this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
-                    if (this.items[i].quality > 0) {
-                        if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-                            this.items[i].quality = this.items[i].quality - 1;
-                        }
-                    }
-                } else {
-                    if (this.items[i].quality < 50) {
-                        this.items[i].quality = this.items[i].quality + 1;
-                        if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
-                            if (this.items[i].sellIn < 11) {
-                                if (this.items[i].quality < 50) {
-                                    this.items[i].quality = this.items[i].quality + 1;
-                                }
-                            }
-                            if (this.items[i].sellIn < 6) {
-                                if (this.items[i].quality < 50) {
-                                    this.items[i].quality = this.items[i].quality + 1;
-                                }
-                            }
-                        }
-                    }
+            } else if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
+                this.procesBackstage(i)
+            } else {
+                if (this.items[i].quality < 50) {
+                    this.items[i].quality = this.items[i].quality + 1;
                 }
                 if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
                     this.items[i].sellIn = this.items[i].sellIn - 1;
@@ -62,25 +42,40 @@ class Shop {
                 }
             }
         }
-
         return this.items;
     }
 
     procesBrieItems(index) {
         this.items[index].sellIn--;
-        if (this.items[index].quality < 50) {
-            if (this.items[index].sellIn >= 0) {
-                this.items[index].quality++;
-            } else {
-                this.items[index].quality += 2;
-            }
+        if (this.items[index].sellIn >= 0) {
+            this.items[index].quality++;
+        } else {
+            index
+            this.items[index].quality += 2;
         }
         if (this.items[index].quality > 50) {
-            this.items[index].quality = 50;
-
+            this.items[index].quality = 50
         }
     }
-    procesSulfurasItems(index) {
 
+    procesBackstage(index) {
+        if (this.items[index].sellIn == 0) {
+            this.items[index].quality = 0
+        } else if (this.items[index].sellIn < 6) {
+            this.items[index].quality = this.items[index].quality + 3
+            if (this.items[index].quality > 50) {
+                this.items[index].quality = 50
+            }
+        } else if (this.items[index].sellIn < 11) {
+            this.items[index].quality = this.items[index].quality + 2
+            if (this.items[index].quality > 50) {
+                this.items[index].quality = 50
+            }
+        } else {
+            this.items[index].quality = this.items[index].quality + 1
+            if (this.items[index].quality > 50) {
+                this.items[index].quality = 50
+            }
+        }
     }
 }
