@@ -1,14 +1,16 @@
 describe("queso brie", function() {
+    //creamos el objeto
     const gildedRose = new Shop([{
         name: 'Aged Brie',
         sellIn: 10,
         quality: 10
     }]);
-    // 
+    // una vez creada la clase la actualizamos
     gildedRose.updateQuality();
+    // retornamos el resultado
     const items = gildedRose.getItems();
 
-
+    //comprobamos que los datos que nos devuelve son los correctos
     it("Deberia de actualizar el producto correctamente", function() {
         expect(items[0].name).toEqual("Aged Brie");
         expect(items[0].sellIn).toEqual(9);
