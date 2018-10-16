@@ -1,9 +1,14 @@
 class Game {
-    constructor(){
-
+    constructor(game = []) {
+        
     }
 
     roll() {
+
+    	
+            
+        
+
 
     }
 
