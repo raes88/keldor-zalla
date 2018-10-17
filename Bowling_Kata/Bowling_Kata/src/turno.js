@@ -1,5 +1,5 @@
 class Turno {
-    constructor(){
+    constructor() {
         this.tiradas = []
         this.finalizado = false
         this.tipo = null
@@ -7,7 +7,6 @@ class Turno {
 
     roll(bolos) {
         this.tiradas.push(new Tirada(bolos))
-        //console.log(this.tiradas)
         if (this.tiradas.length === 2 || this.tiradas[0].getBolos() === 10) {
             this.finalizado = true
         }
@@ -15,10 +14,31 @@ class Turno {
 
     score(siguienteTurno) {
         let score = 0
-        for (let i = 0; i < this.tiradas.length; i++) {
-            score += this.tiradas[i].getBolos()
+        score += this.getPoints()
+
+        if (this.tiradas[0].getBolos() === 10 && siguienteTurno.getPrimeraTirada() === 10) {
+            //console.log(score + 'primer strike')
+            if (siguienteTurno.getPrimeraTirada() === 10) {
+                score = +siguienteTurno.getPrimeraTirada()
+                //console.log(score + 'segundo strike')
+            }
+        } else {
+            if (score === 10) {
+                score += siguienteTurno.getPrimeraTirada()
+            }
         }
         return score
+    }
+    getPrimeraTirada() {
+        return this.tiradas[0].getBolos()
+    }
+
+    getPoints() {
+        let points = 0
+        for (let i = 0; i < this.tiradas.length; i++) {
+            points += this.tiradas[i].getBolos()
+        }
+        return points
     }
 
     estaFinalizado() {
