@@ -6,6 +6,7 @@ class Turno10 extends Turno {
     roll(bolos) {
         this.tiradas.push(new Tirada(bolos))
         if (this.tiradas[0].getBolos() === 10) {
+        	//numStrtike +=
             this.tipo = 'strike'
         } else if (this.tiradas.length === 2) {
             if (this.getPoints() === 10) {
@@ -26,12 +27,12 @@ class Turno10 extends Turno {
         //         this.tipo = 'normal'
         //         this.finalizado = true
         //     }
-        // }
+        // }S
     }
-    
+
     score() {
         let score = 0
-
+      
         score += this.getPoints()
 
         return score

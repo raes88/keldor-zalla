@@ -23,6 +23,7 @@ class Turno {
     score(siguientesTurnos) {
         //console.log(siguientesTurnos);
         let score = 0
+        
 
         score += this.getPoints()
 
@@ -31,6 +32,7 @@ class Turno {
         }
 
         if (this.getTipo() === 'strike') {
+            
             score += siguientesTurnos[0].getPrimeraTirada()
             if (siguientesTurnos[0].getTipo() === 'strike') {
                 if (siguientesTurnos.length > 1) {
