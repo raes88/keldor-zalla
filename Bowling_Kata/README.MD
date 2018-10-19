@@ -22,32 +22,6 @@ roll(pins : int) is called each time the player rolls a ball.  The argument is t
 score() : int is called only at the very end of the game.  It returns the total score for that game.
 
 
----------------------------------------------
-El juego consta de 10 cuadros como se muestra arriba. En cada cuadro el jugador tiene
-Dos oportunidades para derribar 10 pines. La puntuación para el cuadro es el total.
-número de pines derribados, más bonificaciones por huelgas y repuestos.
-
-Un repuesto es cuando el jugador derriba los 10 pines en dos intentos. La bonificación por
-ese marco es el número de pines derribados por el siguiente rollo. Así que en el cuadro 3
-arriba, el puntaje es 10 (el número total derribado) más un bono de 5 (el
-número de pines derribados en la siguiente tirada.)
-
-Una huelga es cuando el jugador derriba los 10 pines en su primer intento. La bonificación
-para ese cuadro es el valor de las siguientes dos bolas rodadas.
-
-En el décimo cuadro, un jugador que tira un repuesto o huelga puede lanzar el extra.
-Bolas para completar el cuadro. Sin embargo no se pueden rodar más de tres bolas.
-décimo cuadro.
-
-
-Los requisitos
-
-Escribe una clase llamada "Juego" que tiene dos métodos
-roll (pins: int) se llama cada vez que el jugador lanza una pelota. El argumento es el número de pines derribados.
-score (): int se llama solo al final del juego. Devuelve la puntuación total para ese juego.
-
-----------------------------------------------
-
 Reglas de Juego
 
 Posición de los bolos.
