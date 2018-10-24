@@ -41,5 +41,3 @@ for (var i = 1; i <= 100; i++) {
     }
 }
 document.write("Los multiplos de 3 son: ", multiples_3);
-document.write("<br>Los mul") 
-   
